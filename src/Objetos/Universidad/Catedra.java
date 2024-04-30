@@ -13,7 +13,7 @@ public class Catedra {
     private String turno;
     private String dia;
     private List<Docente> docentes;
-    private List<Alumno> alumnosInscriptos;
+    private ConjuntoEstudiantes alumnosInscriptos;
     private Materia materia;
 
     public Catedra() {
@@ -27,7 +27,7 @@ public class Catedra {
         docentes.add(docente);
     }
 
-    public void agregarAlumno(Alumno alumno) {
-        alumnosInscriptos.add(alumno);
+    public void agregarAlumno(Estudiante alumno) {
+        alumnosInscriptos.add(estudiante);
     }
 }
