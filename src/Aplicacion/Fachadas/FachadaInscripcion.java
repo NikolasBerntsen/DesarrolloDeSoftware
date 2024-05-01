@@ -1,4 +1,4 @@
-package Aplicacion.Controladores;
+package Aplicacion.Fachadas;
 
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;

@@ -1,4 +1,4 @@
-package Interfaz;
+package Aplicacion.Interfaz;
 
 public interface Exportar {
 
