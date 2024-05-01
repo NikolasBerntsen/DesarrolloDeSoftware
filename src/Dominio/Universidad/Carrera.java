@@ -14,9 +14,17 @@ public class Carrera {
         return materias;
     }
 
+    public List<Catedra> getCatedras(Materia materia){
+        return materia.getCatedras();
+    }
+
     // No necesitamos un setter para la lista, ya que la inicializamos en el constructor
 
     public void agregarMateria(Materia materia) {
         materias.add(materia);
+    }
+
+    public int getCargaHorariaMaxima() {
+        return cargaHorariaMaxima;
     }
 }

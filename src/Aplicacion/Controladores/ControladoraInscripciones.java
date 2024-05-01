@@ -1,11 +1,18 @@
 package Aplicacion.Controladores;
 
+import Aplicacion.Interfaz.MetodoPago;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Estudiante;
+import Dominio.utils.Fecha;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class ControladoraInscripciones {
+    private MetodoPago metodoPago;
     private static ControladoraInscripciones instancia = null;
 
     private ControladoraInscripciones() {}
@@ -17,11 +24,48 @@ public class ControladoraInscripciones {
         return instancia;
     }
 
-    public void validarCorrelativas(Estudiante estudiante){}
-    public void validarCargaHoraria(Estudiante estudiante, Materia materia){}
-    public void inscribirseEnCatedra(Estudiante estudiante, Catedra catedra){}
-    public void bajaDeMateria(Estudiante estudiante, Catedra catedra){}
-    public void pagar(int monto){}
-    public void validarDiaInscripcion(Carrera carrera){}
+    public void setMetodoPago(MetodoPago metodoPago) {
+        this.metodoPago = metodoPago;
+    }
+
+    public boolean validarCorrelativas(Estudiante estudiante, Materia materia){
+        List<Materia> correlativas = materia.getCorrelativasAnteriores();
+        List<Materia> aprovadas = estudiante.getMateriasAprobadas();
+        for (Materia correlativa : correlativas){
+            boolean esta = false;
+            for(Materia matAprovada : aprovadas){
+                if (matAprovada.getNombre().equals(correlativa.getNombre())){
+                    esta = true;
+                }
+            }
+            if (!esta){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean validarCargaHoraria(Estudiante estudiante, Materia materia){
+        return ((estudiante.getCargaHoraria() + materia.getCargaHoraria()) <= estudiante.getCarrera().getCargaHorariaMaxima());
+    }
+    public void inscribirseEnCatedra(Estudiante estudiante, Catedra catedra){
+        estudiante.inscribirA(catedra);
+    }
+    public void bajaDeMateria(Estudiante estudiante, Catedra catedra){
+        estudiante.bajarDe(catedra);
+    }
+    public void pagar(int monto){
+        MetodoPago metodoPago.pagar(monto);
+    }
+    public boolean validarDiaInscripcion(Carrera carrera){
+        Fecha fechaActual = new Fecha(0,0,0);
+        fechaActual.fechaActual();
+
+        Facultad facultad = ControladorUniversidad.getInstancia().fromCarreraGetFacultad(carrera);
+        if (fechaActual.esAnteriorA(facultad.getDiaLimiteDeInscripcion()){
+            return true;
+        }
+        return false;
+
+    }
 
 }

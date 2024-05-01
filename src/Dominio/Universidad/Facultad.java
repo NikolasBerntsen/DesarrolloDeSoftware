@@ -16,9 +16,21 @@ public class Facultad {
         return carreras;
     }
 
+    public List<Materia> getMaterias(Carrera carrera) {
+        return carrera.getMaterias();
+    }
+
+    public List<Catedra> getCatedras(Carrera carrera,Materia materia){
+        return carrera.getCatedras(materia);
+    }
+
     // No necesitamos un setter para la lista, ya que la inicializamos en el constructor
 
     public void agregarCarrera(Carrera carrera) {
         carreras.add(carrera);
+    }
+
+    public Fecha getDiaLimiteDeInscripcion() {
+        return diaLimiteDeInscripcion;
     }
 }

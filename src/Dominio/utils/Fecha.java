@@ -13,12 +13,24 @@ public class Fecha {
     }
 
     // Método para obtener la fecha actual
-    public static Fecha fechaActual() {
+    public Fecha fechaActual() {
         Date fechaActual = new Date();
-        int dia = fechaActual.getDate();
-        int mes = fechaActual.getMonth() + 1; // Sumamos 1 porque en Date el mes empieza desde 0
-        int anio = fechaActual.getYear() + 1900; // Sumamos 1900 porque en Date el año está en formato "año actual - 1900"
-        return new Fecha(dia, mes, anio);
+        this.dia = fechaActual.getDate();
+        this.mes = fechaActual.getMonth() + 1; // Sumamos 1 porque en Date el mes empieza desde 0
+        this.anio = fechaActual.getYear() + 1900; // Sumamos 1900 porque en Date el año está en formato "año actual - 1900"
+    }
+
+    public boolean esAnteriorA(Fecha fecha){
+        if (fecha.getAnio() < anio){
+            return true;
+        }
+        if (fecha.getMes() < mes){
+            return true;
+        }
+        if (fecha.getDia() <= dia){
+            return true;
+        }
+        return false;
     }
 
     // Getters y setters

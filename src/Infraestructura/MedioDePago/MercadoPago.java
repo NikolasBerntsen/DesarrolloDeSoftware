@@ -1,6 +1,8 @@
 package Infraestructura.MedioDePago;
 
-public class MercadoPago {
+import Aplicacion.Interfaz.MetodoPago;
+
+public class MercadoPago implements MetodoPago {
     public void pagar() {
         System.out.println("Pagado con Mercado Pago");
     }

@@ -29,4 +29,28 @@ public class Materia {
     public void agregarCatedra(Catedra catedra) {
         catedras.add(catedra);
     }
+
+    public int getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public List<Catedra> getCatedras() {
+        return catedras;
+    }
+
+    public List<Materia> getCorrelativasAnteriores() {
+        return correlativasAnteriores;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getCodigoID() {
+        return codigoID;
+    }
+
+    public List<Materia> getCorrelativasPosteriores() {
+        return correlativasPosteriores;
+    }
 }
