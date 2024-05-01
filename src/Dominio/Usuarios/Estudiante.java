@@ -1,3 +1,9 @@
+package Dominio.Usuarios;
+
+import Dominio.Universidad.Carrera;
+import Dominio.Universidad.Catedra;
+import Dominio.Universidad.Materia;
+
 import java.util.List;
 
 public class Estudiante {

@@ -1,4 +1,4 @@
-package Objetos.Usuarios;
+package Dominio.Usuarios;
 
 public class Usuario {
     private String nombre;

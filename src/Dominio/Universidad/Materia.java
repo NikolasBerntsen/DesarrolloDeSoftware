@@ -1,4 +1,4 @@
-package Objetos.Universidad;
+package Dominio.Universidad;
 import java.util.List;
 import java.util.ArrayList;
 

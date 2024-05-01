@@ -1,3 +1,10 @@
+package Aplicacion.Controladores;
+
+import Dominio.Universidad.Carrera;
+import Dominio.Universidad.Catedra;
+import Dominio.Universidad.Materia;
+import Dominio.Usuarios.Estudiante;
+
 public class ControladoraInscripciones {
     private static ControladoraInscripciones instancia = null;
 

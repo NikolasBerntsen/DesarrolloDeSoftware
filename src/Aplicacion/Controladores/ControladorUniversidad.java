@@ -1,3 +1,5 @@
+package Aplicacion.Controladores;
+
 public class ControladorUniversidad {
     private static ControladorUniversidad instancia = null;
 

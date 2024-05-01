@@ -1,5 +1,5 @@
-package Objetos.Usuarios;
-import Objetos.Universidad.Catedra;
+package Dominio.Usuarios;
+import Dominio.Universidad.Catedra;
 
 import java.util.List;
 

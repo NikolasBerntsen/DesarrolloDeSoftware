@@ -1,7 +1,9 @@
-package Objetos.Universidad;
+package Dominio.Universidad;
 
-import Objetos.Usuarios.Alumno;
-import Objetos.Usuarios.Docente;
+
+import Dominio.Usuarios.ConjuntoEstudiantes;
+import Dominio.Usuarios.Docente;
+import Dominio.Usuarios.Estudiante;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +16,12 @@ public class Catedra {
     private String dia;
     private List<Docente> docentes;
     private ConjuntoEstudiantes alumnosInscriptos;
+
     private Materia materia;
 
     public Catedra() {
         docentes = new ArrayList<>();
-        alumnosInscriptos = new ArrayList<>();
+        alumnosInscriptos = new ConjuntoEstudiantes();
     }
 
     // No necesitamos setters para las listas, ya que las inicializamos en el constructor
@@ -27,7 +30,7 @@ public class Catedra {
         docentes.add(docente);
     }
 
-    public void agregarAlumno(Estudiante alumno) {
-        alumnosInscriptos.add(estudiante);
+    public void agregarAlumno(Estudiante Estudiante) {
+        alumnosInscriptos.add(Estudiante);
     }
 }

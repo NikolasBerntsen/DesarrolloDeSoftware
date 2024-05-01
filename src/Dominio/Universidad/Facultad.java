@@ -1,5 +1,5 @@
-package Objetos.Universidad;
-import Objetos.utils.Fecha;
+package Dominio.Universidad;
+import Dominio.utils.Fecha;
 
 import java.util.List;
 import java.util.ArrayList;
