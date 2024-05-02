@@ -34,12 +34,13 @@ public class ControladorUniversidad {
     public void setFacultad(){}
     public void crearFacultad(){}
 
-    public Facultad fromCarreraGetFacultad(Carrera carrera){
-        for (Facultad facu : facultades){
-            if (facu.getCarrera().includes(carrera)){
+    public Facultad fromCarreraGetFacultad(Carrera carrera) {
+        for (Facultad facu : facultades) {
+            if (facu.getCarreras().contains(carrera)) {
                 return facu;
             }
         }
         return null;
     }
+
 }

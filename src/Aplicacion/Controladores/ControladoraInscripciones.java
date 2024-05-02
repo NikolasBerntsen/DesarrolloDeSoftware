@@ -33,8 +33,9 @@ public class ControladoraInscripciones {
         for (Materia correlativa : correlativas){
             boolean esta = false;
             for(Materia matAprovada : aprovadas){
-                if (matAprovada.getNombre().equals(correlativa.getNombre())){
+                if (matAprovada.getNombre().equals(correlativa.getNombre())) {
                     esta = true;
+                    break;
                 }
             }
             if (!esta){
