@@ -7,7 +7,7 @@ import Dominio.Universidad.Materia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Estudiante {
+public class Estudiante extends Usuario{
     private Carrera carrera;
     private List<Materia> materiasAprobadas;
     private List<Catedra> catedrasInscriptas;
