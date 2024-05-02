@@ -60,7 +60,7 @@ public class ControladoraInscripciones {
         fechaActual.fechaActual();
 
         Facultad facultad = ControladorUniversidad.getInstancia().fromCarreraGetFacultad(carrera);
-        if (fechaActual.esAnteriorA(facultad.getDiaLimiteDeInscripcion()){
+        if (fechaActual.esAnteriorA(facultad.getDiaLimiteDeInscripcion())){
             return true;
         }
         return false;

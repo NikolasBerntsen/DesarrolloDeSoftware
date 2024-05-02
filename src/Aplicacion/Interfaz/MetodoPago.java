@@ -2,6 +2,6 @@ package Aplicacion.Interfaz;
 
 public interface MetodoPago {
 
-    public void pagar();
+    public void pagar(int monto);
 
 }
