@@ -1,4 +1,5 @@
 package Dominio.Usuarios;
+import Aplicacion.Controladores.ControladorInformes;
 import Dominio.Universidad.Catedra;
 
 import java.util.List;
@@ -8,8 +9,9 @@ public class Docente extends Usuario {
 
     // Constructor, getters y setters
 
-    public void crearInforme() {
-        // Implementación del método
+    public void crearInforme(List<Catedra> horarioSemanal) {
+        ControladorInformes.getInstancia().exportarInformeCursada(horarioSemanal);
+
     }
 
     public List<Catedra> getHorarioSemanal() {

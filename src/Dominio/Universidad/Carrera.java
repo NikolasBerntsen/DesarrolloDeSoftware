@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Carrera {
+    private  String nombre;
     private List<Materia> materias;
     private int cargaHorariaMaxima;
 
@@ -26,5 +27,9 @@ public class Carrera {
 
     public int getCargaHorariaMaxima() {
         return cargaHorariaMaxima;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

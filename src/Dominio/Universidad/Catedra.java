@@ -33,4 +33,8 @@ public class Catedra {
     public void agregarAlumno(Estudiante Estudiante) {
         alumnosInscriptos.add(Estudiante);
     }
+
+    public Materia getMateria() {
+        return materia;
+    }
 }

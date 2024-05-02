@@ -9,6 +9,7 @@ public class Materia {
     private List<Materia> correlativasAnteriores;
     private List<Materia> correlativasPosteriores;
     private List<Catedra> catedras;
+    private Carrera carrera;
 
     public Materia() {
         correlativasAnteriores = new ArrayList<>();
@@ -52,5 +53,9 @@ public class Materia {
 
     public List<Materia> getCorrelativasPosteriores() {
         return correlativasPosteriores;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
     }
 }

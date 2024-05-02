@@ -2,6 +2,7 @@ package Aplicacion.Controladores;
 
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Facultad;
+import Dominio.Universidad.Materia;
 
 import java.util.List;
 
@@ -25,10 +26,11 @@ public class ControladorUniversidad {
     public void getMateria(){}
     public void setMateria(){}
     public void crearMateria(){}
-    public void getCarrera(){}
+    public void getCarreras(String nombre){
+    }
     public void setCarrera(){}
     public void crearCarrera(){}
-    public List<Facultad> getFacultad(){
+    public List<Facultad> getFacultades(){
         return facultades;
     }
     public void setFacultad(){}

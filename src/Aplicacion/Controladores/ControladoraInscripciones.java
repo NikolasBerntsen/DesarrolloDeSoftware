@@ -11,7 +11,6 @@ import Dominio.utils.Fecha;
 import java.util.List;
 
 public class ControladoraInscripciones {
-    private MetodoPago metodoPago;
     private static ControladoraInscripciones instancia = null;
 
     private ControladoraInscripciones() {}
@@ -23,6 +22,7 @@ public class ControladoraInscripciones {
         return instancia;
     }
 
+    private MetodoPago metodoPago;
     public void setMetodoPago(MetodoPago metodoPago) {
         this.metodoPago = metodoPago;
     }

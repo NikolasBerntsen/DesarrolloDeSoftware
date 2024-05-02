@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Facultad {
+    private String nombre;
     private List<Carrera> carreras;
     private Fecha diaLimiteDeInscripcion;
 
@@ -32,5 +33,9 @@ public class Facultad {
 
     public Fecha getDiaLimiteDeInscripcion() {
         return diaLimiteDeInscripcion;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }
