@@ -12,5 +12,6 @@ public class main {
         ControladoraInscripciones.getInstancia().setMetodoPago(new MercadoPago());
         ControladorInformes.getInstancia().setExportador(new PDF());
         TestControladoraInscripciones.testValidarCorrelativas();
+        TestControladoraInscripciones.testValidarCargaHoraria();
     }
 }

@@ -32,4 +32,6 @@ public class Carrera {
     public String getNombre() {
         return nombre;
     }
+
+    public void setCargaHorariaMaxima(int cargaHorariaMaxima){this.cargaHorariaMaxima=cargaHorariaMaxima;}
 }

@@ -32,6 +32,7 @@ public class Estudiante extends Usuario{
     public int getCargaHoraria() {
         return cargaHoraria;
     }
+
     public void inscribirA(Catedra catedra){
         catedrasInscriptas.add(catedra);
     }
@@ -39,7 +40,12 @@ public class Estudiante extends Usuario{
     public void bajarDe(Catedra catedra) {
         catedrasInscriptas.remove(catedra);
     }
+
     public void addAprobada(Materia materia){
         materiasAprobadas.add(materia);
     }
+
+    public void setCargaHoraria(int cargaHoraria) {this.cargaHoraria = cargaHoraria;}
+
+    public void setCarrera(Carrera carrera){this.carrera = carrera;}
 }

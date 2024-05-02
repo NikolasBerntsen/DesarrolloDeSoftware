@@ -1,6 +1,7 @@
 package Test.Aplicacion;
 
 import Aplicacion.Controladores.ControladoraInscripciones;
+import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Estudiante;
 
@@ -44,6 +45,31 @@ public class TestControladoraInscripciones {
         //result
         if (resultado){
             System.out.println("Pruba Superada: los estudiantes deben cumplir con las correlativas para anotarse a una materia");
+        }
+    }
+
+    static public void testValidarCargaHoraria(){
+        // given
+        Carrera carrera = new Carrera();
+        carrera.setCargaHorariaMaxima(75);
+        Estudiante estudiante = new Estudiante();
+        estudiante.setCargaHoraria(40);
+        estudiante.setCarrera(carrera);
+        Materia materia0 = new Materia();
+        materia0.setCargaHoraria(30);
+        Materia materia1 = new Materia();
+        materia1.setCargaHoraria(40);
+
+        // try
+
+        ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
+
+        if (cont.validarCargaHoraria(estudiante,materia1)){
+            System.out.println("Fallo una prueba: Un estudiante NO se puede anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
+        }
+
+        if (cont.validarCargaHoraria(estudiante,materia0)){
+            System.out.println("Prueba Superada: Los estudiantes se pueden anotar a una materia si con esta NO SUPERAN la carga horaria máxima de la carrera");
         }
     }
 }

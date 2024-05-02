@@ -62,4 +62,6 @@ public class Materia {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
+
+    public void setCargaHoraria(int cargaHoraria) {this.cargaHoraria = cargaHoraria;}
 }
