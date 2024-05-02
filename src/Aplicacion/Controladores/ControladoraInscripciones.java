@@ -3,12 +3,11 @@ package Aplicacion.Controladores;
 import Aplicacion.Interfaz.MetodoPago;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
+import Dominio.Universidad.Facultad;
 import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Estudiante;
 import Dominio.utils.Fecha;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class ControladoraInscripciones {
@@ -54,7 +53,7 @@ public class ControladoraInscripciones {
         estudiante.bajarDe(catedra);
     }
     public void pagar(int monto){
-        MetodoPago metodoPago.pagar(monto);
+        metodoPago.pagar(monto);
     }
     public boolean validarDiaInscripcion(Carrera carrera){
         Fecha fechaActual = new Fecha(0,0,0);
