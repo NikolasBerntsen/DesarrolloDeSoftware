@@ -13,7 +13,7 @@ public class Fecha {
     }
 
     // Método para obtener la fecha actual
-    public Fecha fechaActual() {
+    public void fechaActual() {
         Date fechaActual = new Date();
         this.dia = fechaActual.getDate();
         this.mes = fechaActual.getMonth() + 1; // Sumamos 1 porque en Date el mes empieza desde 0
