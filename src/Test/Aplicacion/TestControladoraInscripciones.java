@@ -15,8 +15,8 @@ public class TestControladoraInscripciones {
         co2.setNombre("calculo2");
         Materia materia = new Materia();
         materia.agregarCorrelativaAnterior(co0);
-        materia.agregarCorrelativaPosterior(co1);
-        materia.agregarCorrelativaPosterior(co2);
+        materia.agregarCorrelativaAnterior(co1);
+        materia.agregarCorrelativaAnterior(co2);
 
         //try
         ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
