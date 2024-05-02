@@ -58,4 +58,8 @@ public class Materia {
     public Carrera getCarrera() {
         return carrera;
     }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
 }

@@ -4,6 +4,7 @@ import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Materia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estudiante {
@@ -11,6 +12,10 @@ public class Estudiante {
     private List<Materia> materiasAprobadas;
     private List<Catedra> catedrasInscriptas;
     private int cargaHoraria;
+    public Estudiante(){
+        materiasAprobadas = new ArrayList<Materia>();
+        catedrasInscriptas = new ArrayList<Catedra>();
+    }
 
     public Carrera getCarrera() {
         return carrera;
@@ -33,5 +38,8 @@ public class Estudiante {
 
     public void bajarDe(Catedra catedra) {
         catedrasInscriptas.remove(catedra);
+    }
+    public void addAprobada(Materia materia){
+        materiasAprobadas.add(materia);
     }
 }
