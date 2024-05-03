@@ -21,14 +21,12 @@ public class Fecha {
     }
 
     public boolean esAnteriorA(Fecha fecha){
-        if (fecha.getAnio() <= anio){
-            return true;
-        }
-        if (fecha.getMes() <= mes){
-            return true;
-        }
-        if (fecha.getDia() <= dia){
-            return true;
+        if (fecha.getAnio() <= this.anio){
+            if (fecha.getMes() <= this.mes){
+                if (fecha.getDia() <= this.dia){
+                    return true;
+                }
+            }
         }
         return false;
     }
