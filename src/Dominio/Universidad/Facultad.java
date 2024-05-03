@@ -1,8 +1,9 @@
 package Dominio.Universidad;
+
 import Dominio.utils.Fecha;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Facultad {
     private String nombre;
@@ -21,11 +22,9 @@ public class Facultad {
         return carrera.getMaterias();
     }
 
-    public List<Catedra> getCatedras(Carrera carrera,Materia materia){
+    public List<Catedra> getCatedras(Carrera carrera, Materia materia) {
         return carrera.getCatedras(materia);
     }
-
-    // No necesitamos un setter para la lista, ya que la inicializamos en el constructor
 
     public void agregarCarrera(Carrera carrera) {
         carreras.add(carrera);
@@ -45,5 +44,10 @@ public class Facultad {
 
     public void crearCarrera(Carrera carrera) {
         carreras.add(carrera);
+    }
+
+    // Método para agregar materia a una carrera específica
+    public void agregarMateriaACarrera(Carrera carrera, Materia materia) {
+        carrera.agregarMateria(materia);
     }
 }

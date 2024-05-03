@@ -7,14 +7,15 @@ import Dominio.Universidad.Materia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Estudiante extends Usuario{
+public class Estudiante extends Usuario {
     private Carrera carrera;
     private List<Materia> materiasAprobadas;
     private List<Catedra> catedrasInscriptas;
     private int cargaHoraria;
-    public Estudiante(){
-        materiasAprobadas = new ArrayList<Materia>();
-        catedrasInscriptas = new ArrayList<Catedra>();
+
+    public Estudiante() {
+        materiasAprobadas = new ArrayList<>();
+        catedrasInscriptas = new ArrayList<>();
     }
 
     public Carrera getCarrera() {
@@ -33,23 +34,32 @@ public class Estudiante extends Usuario{
         return cargaHoraria;
     }
 
-    public void inscribirA(Catedra catedra){
+    public void inscribirA(Catedra catedra) {
         catedrasInscriptas.add(catedra);
-        cargaHoraria = 0;
-        for (Catedra cate : catedrasInscriptas){
-            cargaHoraria += cate.getCargaHoraria();
-        }
+        calcularCargaHoraria();
     }
 
     public void bajarDe(Catedra catedra) {
         catedrasInscriptas.remove(catedra);
+        calcularCargaHoraria();
     }
 
-    public void addAprobada(Materia materia){
+    public void addAprobada(Materia materia) {
         materiasAprobadas.add(materia);
     }
 
-    public void setCargaHoraria(int cargaHoraria) {this.cargaHoraria = cargaHoraria;}
+    public void setCargaHoraria(int cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
 
-    public void setCarrera(Carrera carrera){this.carrera = carrera;}
+    public void setCarrera(Carrera carrera) {
+        this.carrera = carrera;
+    }
+
+    private void calcularCargaHoraria() {
+        cargaHoraria = 0;
+        for (Catedra catedra : catedrasInscriptas) {
+            cargaHoraria += catedra.getMateria().getCargaHoraria();
+        }
+    }
 }
