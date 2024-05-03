@@ -37,4 +37,12 @@ public class Catedra {
     public Materia getMateria() {
         return materia;
     }
+
+    public int getCargaHoraria() {
+        return materia.getCargaHoraria();
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+    }
 }
