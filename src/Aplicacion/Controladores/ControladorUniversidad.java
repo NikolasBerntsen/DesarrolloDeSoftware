@@ -19,7 +19,7 @@ public class ControladorUniversidad {
         return instancia;
     }
 
-    private List<Facultad> facultades = ArrayList<Facultad>();
+    private List<Facultad> facultades ;//= ArrayList<Facultad>();
 
     public void getCatedra(){}
     public void setCatedra(){}

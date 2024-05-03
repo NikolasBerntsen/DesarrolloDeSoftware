@@ -49,6 +49,7 @@ public class ControladoraInscripciones {
     }
     public void inscribirseEnCatedra(Estudiante estudiante, Catedra catedra){
         estudiante.inscribirA(catedra);
+        catedra.agregarAlumno(estudiante);
     }
     public void bajaDeMateria(Estudiante estudiante, Catedra catedra){
         estudiante.bajarDe(catedra);

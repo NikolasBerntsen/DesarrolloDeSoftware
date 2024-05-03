@@ -3,6 +3,7 @@ package Test.Aplicacion;
 import Aplicacion.Controladores.ControladorUniversidad;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Dominio.Universidad.Carrera;
+import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Facultad;
 import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Estudiante;
@@ -60,24 +61,29 @@ public class TestControladoraInscripciones {
     static public void testValidarCargaHoraria(){
         // given
         Carrera carrera = new Carrera();
-        carrera.setCargaHorariaMaxima(75);
-        Estudiante estudiante = new Estudiante();
-        estudiante.setCargaHoraria(40);
-        estudiante.setCarrera(carrera);
+        carrera.setCargaHorariaMaxima(70);
         Materia materia0 = new Materia();
-        materia0.setCargaHoraria(30);
-        Materia materia1 = new Materia();
-        materia1.setCargaHoraria(40);
+        materia0.setCargaHoraria(35);
+        Materia materia35 = new Materia();
+        materia35.setCargaHoraria(35);
+        Materia materia40 = new Materia();
+        materia40.setCargaHoraria(40);
+
+        Estudiante estudiante = new Estudiante();
+        estudiante.setCarrera(carrera);
+        Catedra catedra = new Catedra();
+        catedra.setMateria(materia0);
+        estudiante.inscribirA(catedra);
 
         // try
 
         ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
 
-        if (cont.validarCargaHoraria(estudiante,materia1)){
+        if (cont.validarCargaHoraria(estudiante,materia40)){
             System.out.println(ANSI_RED + "Fallo una prueba: " + ANSI_RESET + "Un estudiante NO se puede anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
         }
 
-        if (cont.validarCargaHoraria(estudiante,materia0)){
+        if (cont.validarCargaHoraria(estudiante,materia35)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " + ANSI_RESET + "Los estudiantes se pueden anotar a una materia si con esta NO SUPERAN la carga horaria máxima de la carrera");
         }
     }
@@ -168,5 +174,4 @@ public class TestControladoraInscripciones {
                     ANSI_RESET + "un dia despues de la fecha limite, te podes anotar");
         }
     }
-
 }

@@ -35,6 +35,10 @@ public class Estudiante extends Usuario{
 
     public void inscribirA(Catedra catedra){
         catedrasInscriptas.add(catedra);
+        cargaHoraria = 0;
+        for (Catedra cate : catedrasInscriptas){
+            cargaHoraria += cate.getCargaHoraria();
+        }
     }
 
     public void bajarDe(Catedra catedra) {

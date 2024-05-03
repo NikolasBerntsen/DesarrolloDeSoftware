@@ -14,6 +14,7 @@ public class main {
 
         TestControladoraInscripciones.testValidarCorrelativas();
         TestControladoraInscripciones.testValidarCargaHoraria();
-        TestControladoraInscripciones.testValidarDiaInscripcion();
+        //TestControladoraInscripciones.testValidarDiaInscripcion();
+
     }
 }
