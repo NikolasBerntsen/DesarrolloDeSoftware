@@ -79,8 +79,4 @@ public class TestControladoraInscripciones {
         }
     }
 
-    public static void main(String[] args) {
-        testValidarCorrelativas();
-        testValidarCargaHoraria();
-    }
 }
