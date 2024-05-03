@@ -15,7 +15,7 @@ public class FachadaInscripcion {
     static public void InscribirseCatedra(Catedra catedra, Estudiante estudiante){
         ControladoraInscripciones ConIns = ControladoraInscripciones.getInstancia();
         Materia materia = catedra.getMateria();
-        Carrera carrera = materia.getCarrera(); // esto que hice aca es una estupides, despues veo como lo arreglo
+        Carrera carrera = estudiante.getCarrera();
         ConIns.validarDiaInscripcion(carrera);
         ConIns.validarCargaHoraria(estudiante, materia);
         ConIns.validarCorrelativas(estudiante, materia);
