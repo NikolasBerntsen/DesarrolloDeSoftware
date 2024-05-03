@@ -2,9 +2,7 @@ package Aplicacion.Controladores;
 
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Facultad;
-import Dominio.Universidad.Materia;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorUniversidad {
@@ -30,7 +28,11 @@ public class ControladorUniversidad {
     public void getCarreras(String nombre){
     }
     public void setCarrera(){}
-    public void crearCarrera(){}
+    public void crearCarrera(Carrera carrera, Facultad facultad){
+        int indiceFacu = facultades.indexOf(facultad);
+        facultad.crearCarrera(carrera);
+        facultades.set(indiceFacu,facultad);
+    }
     public List<Facultad> getFacultades(){
         return facultades;
     }
@@ -46,6 +48,10 @@ public class ControladorUniversidad {
             }
         }
         return null;
+    }
+
+    public void resetFacultades(){
+        //facultades = ArrayList<Facultad>();
     }
 
 }

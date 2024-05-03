@@ -173,5 +173,6 @@ public class TestControladoraInscripciones {
             System.out.println(ANSI_RED + "Prueba Fallida: " +
                     ANSI_RESET + "un dia despues de la fecha limite, te podes anotar");
         }
+        contUni.resetFacultades();
     }
 }

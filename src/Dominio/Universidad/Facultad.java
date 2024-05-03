@@ -42,4 +42,8 @@ public class Facultad {
     public void setDialimiteInscripcion(Fecha fecha) {
         this.diaLimiteDeInscripcion = fecha;
     }
+
+    public void crearCarrera(Carrera carrera) {
+        carreras.add(carrera);
+    }
 }
