@@ -23,7 +23,12 @@ public class Catedra {
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
-    // No necesitamos setters para las listas, ya que las inicializamos en el constructor
+    public Catedra(int id, String aula, String dia, String turno){
+        this.id = id;
+        this.aula = aula;
+        this.dia = dia;
+        this.turno = turno;
+    }
 
     public void agregarDocente(Docente docente) {
         docentes.add(docente);
@@ -43,5 +48,10 @@ public class Catedra {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
+    }
+
+    @Override
+    public String toString(){
+        return " id:"+id+"\n aula:"+aula+"\n turno:"+turno+"\n dia:"+dia+Integer.valueOf(alumnosInscriptos.size());
     }
 }
