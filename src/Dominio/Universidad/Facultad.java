@@ -38,7 +38,7 @@ public class Facultad {
         return nombre;
     }
 
-    public void setDialimiteInscripcion(Fecha fecha) {
+    public void setDiaLimiteInscripcion(Fecha fecha) {
         this.diaLimiteDeInscripcion = fecha;
     }
 
@@ -49,5 +49,9 @@ public class Facultad {
     // Método para agregar materia a una carrera específica
     public void agregarMateriaACarrera(Carrera carrera, Materia materia) {
         carrera.agregarMateria(materia);
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

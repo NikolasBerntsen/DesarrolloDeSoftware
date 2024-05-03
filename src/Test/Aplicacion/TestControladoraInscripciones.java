@@ -105,7 +105,7 @@ public class TestControladoraInscripciones {
         facultad.agregarCarrera(carrera);
 
         fechaLimite.fechaActual();
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "sobre la fecha limite, te podes anotar");
@@ -115,7 +115,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(1,0,0);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un dia antes de la fecha limite, te podes anotar");
@@ -125,7 +125,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(-1,1,0);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un mes antes de la fecha limite, te podes anotar");
@@ -135,7 +135,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(0,-1,1);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un año antes de la fecha limite, te podes anotar");
@@ -145,7 +145,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(0,0,-2);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(!cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un año despues de la fecha limite,NO te podes anotar");
@@ -155,7 +155,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(0,-1,1);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(!cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un mes despues de la fecha limite,NO te podes anotar");
@@ -165,7 +165,7 @@ public class TestControladoraInscripciones {
         }
 
         fechaLimite.restarFecha(-1,1,0);
-        facultad.setDialimiteInscripcion(fechaLimite);
+        facultad.setDiaLimiteInscripcion(fechaLimite);
         if(!cont.validarDiaInscripcion(carrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un dia despues de la fecha limite,NO te podes anotar");
