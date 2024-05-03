@@ -1,4 +1,4 @@
-package Test.Aplicacion;
+package Test;
 
 import Aplicacion.Controladores.ControladorUniversidad;
 import Aplicacion.Controladores.ControladoraInscripciones;
