@@ -1,7 +1,6 @@
 package Dominio.Universidad;
 
 
-import Dominio.Usuarios.ConjuntoEstudiantes;
 import Dominio.Usuarios.Docente;
 import Dominio.Usuarios.Estudiante;
 
@@ -15,13 +14,13 @@ public class Catedra {
     private String turno;
     private String dia;
     private List<Docente> docentes;
-    private ConjuntoEstudiantes alumnosInscriptos;
+    private List<Estudiante> alumnosInscriptos;
 
     private Materia materia;
 
     public Catedra() {
         docentes = new ArrayList<>();
-        alumnosInscriptos = new ConjuntoEstudiantes();
+        alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
     // No necesitamos setters para las listas, ya que las inicializamos en el constructor
