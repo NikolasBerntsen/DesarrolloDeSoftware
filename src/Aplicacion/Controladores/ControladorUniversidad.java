@@ -4,6 +4,7 @@ import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Facultad;
 import Dominio.Universidad.Materia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorUniversidad {
@@ -18,7 +19,7 @@ public class ControladorUniversidad {
         return instancia;
     }
 
-    private List<Facultad> facultades;
+    private List<Facultad> facultades = ArrayList<Facultad>();
 
     public void getCatedra(){}
     public void setCatedra(){}
@@ -34,7 +35,9 @@ public class ControladorUniversidad {
         return facultades;
     }
     public void setFacultad(){}
-    public void crearFacultad(){}
+    public void crearFacultad(Facultad facultad){
+        facultades.add(facultad);
+    }
 
     public Facultad fromCarreraGetFacultad(Carrera carrera) {
         for (Facultad facu : facultades) {

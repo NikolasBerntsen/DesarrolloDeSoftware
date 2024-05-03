@@ -21,10 +21,10 @@ public class Fecha {
     }
 
     public boolean esAnteriorA(Fecha fecha){
-        if (fecha.getAnio() < anio){
+        if (fecha.getAnio() <= anio){
             return true;
         }
-        if (fecha.getMes() < mes){
+        if (fecha.getMes() <= mes){
             return true;
         }
         if (fecha.getDia() <= dia){
@@ -62,5 +62,11 @@ public class Fecha {
     @Override
     public String toString() {
         return String.format("%02d/%02d/%04d", dia, mes, anio);
+    }
+
+    public void restarFecha(int dia, int mes, int anio){
+        this.dia -= dia;
+        this.mes -= mes;
+        this.anio -= anio;
     }
 }

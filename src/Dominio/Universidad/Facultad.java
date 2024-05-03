@@ -38,4 +38,8 @@ public class Facultad {
     public String getNombre() {
         return nombre;
     }
+
+    public void setDialimiteInscripcion(Fecha fecha) {
+        this.diaLimiteDeInscripcion = fecha;
+    }
 }
