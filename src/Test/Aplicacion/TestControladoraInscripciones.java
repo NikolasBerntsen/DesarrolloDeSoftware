@@ -6,6 +6,12 @@ import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Estudiante;
 
 public class TestControladoraInscripciones {
+    // Códigos de escape ANSI para colores
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
     static public void testValidarCorrelativas(){
         //given
         Materia co0 = new Materia();
@@ -25,26 +31,26 @@ public class TestControladoraInscripciones {
         Estudiante estudiante = new Estudiante();
         if (cont.validarCorrelativas(estudiante, materia)){
             resultado = false;
-            System.out.println("fallo una prueba: un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :0");
+            System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :0");
         }
         estudiante.addAprobada(co0);
         if (cont.validarCorrelativas(estudiante, materia)){
             resultado = false;
-            System.out.println("fallo una prueba: un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :1");
+            System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :1");
         }
         estudiante.addAprobada(co1);
         if (cont.validarCorrelativas(estudiante, materia)){
             resultado = false;
-            System.out.println("fallo una prueba: un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :2");
+            System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :2");
         }
         estudiante.addAprobada(co2);
         if (!cont.validarCorrelativas(estudiante, materia)){
             resultado = false;
-            System.out.println("fallo una prueba: un estudiante NO se puede anotar a una materia CUMPLIENDO sus correlativas");
+            System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante NO se puede anotar a una materia CUMPLIENDO sus correlativas");
         }
         //result
         if (resultado){
-            System.out.println("Pruba Superada: los estudiantes deben cumplir con las correlativas para anotarse a una materia");
+            System.out.println(ANSI_GREEN + "Prueba Superada: " + ANSI_RESET + "los estudiantes deben cumplir con las correlativas para anotarse a una materia");
         }
     }
 
@@ -65,11 +71,16 @@ public class TestControladoraInscripciones {
         ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
 
         if (cont.validarCargaHoraria(estudiante,materia1)){
-            System.out.println("Fallo una prueba: Un estudiante NO se puede anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
+            System.out.println(ANSI_RED + "Fallo una prueba: " + ANSI_RESET + "Un estudiante NO se puede anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
         }
 
         if (cont.validarCargaHoraria(estudiante,materia0)){
-            System.out.println("Prueba Superada: Los estudiantes se pueden anotar a una materia si con esta NO SUPERAN la carga horaria máxima de la carrera");
+            System.out.println(ANSI_GREEN + "Prueba Superada: " + ANSI_RESET + "Los estudiantes se pueden anotar a una materia si con esta NO SUPERAN la carga horaria máxima de la carrera");
         }
+    }
+
+    public static void main(String[] args) {
+        testValidarCorrelativas();
+        testValidarCargaHoraria();
     }
 }
