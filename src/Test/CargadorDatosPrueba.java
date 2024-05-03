@@ -23,7 +23,7 @@ public class CargadorDatosPrueba {
         // Crear facultades
         Facultad facultadInformatica = new Facultad();
         facultadInformatica.setNombre("Facultad de Informática");
-        Fecha fechaLimiteInscripcion = new Fecha(2024, 6, 30);
+        Fecha fechaLimiteInscripcion = new Fecha(30, 6, 2024);
         facultadInformatica.setDiaLimiteInscripcion(fechaLimiteInscripcion);
 
         // Crear carreras
