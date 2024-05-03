@@ -4,6 +4,7 @@ import Aplicacion.Controladores.ControladorInformes;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Infraestructura.Exportar.PDF;
 import Infraestructura.MedioDePago.MercadoPago;
+import Test.Aplicacion.TestControladorUniversidad;
 import Test.Aplicacion.TestControladoraInscripciones;
 
 public class main {
@@ -14,7 +15,9 @@ public class main {
 
         TestControladoraInscripciones.testValidarCorrelativas();
         TestControladoraInscripciones.testValidarCargaHoraria();
-        //TestControladoraInscripciones.testValidarDiaInscripcion();
+        TestControladoraInscripciones.testValidarDiaInscripcion();
+
+        TestControladorUniversidad.testFromCarreraGetFacultad();
 
     }
 }
