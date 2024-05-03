@@ -4,8 +4,8 @@ import Aplicacion.Controladores.ControladorInformes;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Infraestructura.Exportar.PDF;
 import Infraestructura.MedioDePago.MercadoPago;
-import Test.Aplicacion.TestControladorUniversidad;
-import Test.Aplicacion.TestControladoraInscripciones;
+import Test.TestControladorUniversidad;
+import Test.TestControladoraInscripciones;
 
 public class main {
 
