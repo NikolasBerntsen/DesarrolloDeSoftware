@@ -28,6 +28,8 @@ public class Catedra {
         this.aula = aula;
         this.dia = dia;
         this.turno = turno;
+        docentes = new ArrayList<>();
+        alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
     public void agregarDocente(Docente docente) {
@@ -52,6 +54,6 @@ public class Catedra {
 
     @Override
     public String toString(){
-        return " id:"+id+"\n aula:"+aula+"\n turno:"+turno+"\n dia:"+dia+Integer.valueOf(alumnosInscriptos.size());
+        return "\n id:"+id+"\n aula:"+aula+"\n turno:"+turno+"\n dia:"+dia+Integer.valueOf(alumnosInscriptos.size());
     }
 }
