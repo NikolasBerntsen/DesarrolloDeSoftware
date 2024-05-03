@@ -39,7 +39,7 @@ public class Facultad {
         return nombre;
     }
 
-    public void setDiaLimiteInscripcion(Fecha fecha) {
+    public void setDialimiteInscripcion(Fecha fecha) {
         this.diaLimiteDeInscripcion = fecha;
     }
 

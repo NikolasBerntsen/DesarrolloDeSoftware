@@ -1,6 +1,7 @@
-package Test;
+package Test.Aplicacion;
 
 import Aplicacion.Controladores.ControladorUniversidad;
+import Aplicacion.Controladores.ControladoraInscripciones;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Facultad;
 

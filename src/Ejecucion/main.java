@@ -4,8 +4,14 @@ import Aplicacion.Controladores.ControladorInformes;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Infraestructura.Exportar.PDF;
 import Infraestructura.MedioDePago.MercadoPago;
+
 import Test.TestControladorUniversidad;
 import Test.TestControladoraInscripciones;
+
+import Test.Aplicacion.TestControladorInformes;
+import Test.Aplicacion.TestControladorUniversidad;
+import Test.Aplicacion.TestControladoraInscripciones;
+
 
 public class main {
 
@@ -18,6 +24,8 @@ public class main {
         TestControladoraInscripciones.testValidarDiaInscripcion();
 
         TestControladorUniversidad.testFromCarreraGetFacultad();
+
+        TestControladorInformes.exportarInformeCursada();
 
     }
 }
