@@ -87,6 +87,15 @@ public class ControladorUniversidad {
         }
     }
 
+    public void crearCarrera(String nombre, String nombreFacultad) {
+        for (Facultad facultad : facultades) {
+            if (facultad.getNombre().equals(nombreFacultad)) {
+                Carrera carrera = new Carrera(nombre);
+                facultad.agregarCarrera(carrera);
+                return;
+            }
+        }
+    }
     public void borrarFacultad(String nombre) {
         Facultad facultadToRemove = null;
         for (Facultad facultad : facultades) {
