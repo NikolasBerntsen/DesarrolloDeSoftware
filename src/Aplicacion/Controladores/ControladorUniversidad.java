@@ -2,7 +2,6 @@ package Aplicacion.Controladores;
 
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Facultad;
-import Dominio.Usuarios.Estudiante;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,41 +19,93 @@ public class ControladorUniversidad {
     }
 
     private List<Facultad> facultades = new ArrayList<Facultad>();
-    private List<Estudiante> estudiantes = new ArrayList<Estudiante>();
 
-    public void getCatedra(){}
-    public void setCatedra(){}
-    public void crearCatedra(){}
-    public void getMateria(){}
-    public void setMateria(){}
-    public void crearMateria(){}
-    public void getCarreras(String nombre){
+    public void borrarCatedra(Carrera carrera, String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera car : facultad.getCarreras()) {
+                if (car.equals(carrera)) {
+                    car.borrarCatedra(nombre);
+                    return;
+                }
+            }
+        }
     }
-    public void setCarrera(){}
-    public void crearCarrera(Carrera carrera, Facultad facultad){
-        int indiceFacu = facultades.indexOf(facultad);
-        facultad.crearCarrera(carrera);
-        facultades.set(indiceFacu,facultad);
+
+    public void borrarMateria(Carrera carrera, String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera car : facultad.getCarreras()) {
+                if (car.equals(carrera)) {
+                    car.borrarMateria(nombre);
+                    return;
+                }
+            }
+        }
     }
+
+    public void crearCatedra(Carrera carrera, String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera car : facultad.getCarreras()) {
+                if (car.equals(carrera)) {
+                    car.crearCatedra(nombre);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void crearMateria(Carrera carrera, String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera car : facultad.getCarreras()) {
+                if (car.equals(carrera)) {
+                    car.crearMateria(nombre);
+                    return;
+                }
+            }
+        }
+    }
+
+    public List<Carrera> getCarreras(String nombre) {
+        List<Carrera> carreras = new ArrayList<>();
+        for (Facultad facultad : facultades) {
+            for (Carrera carrera : facultad.getCarreras()) {
+                if (carrera.getNombre().equals(nombre)) {
+                    carreras.add(carrera);
+                }
+            }
+        }
+        return carreras;
+    }
+
+    public void borrarCarrera(String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera carrera : facultad.getCarreras()) {
+                if (carrera.getNombre().equals(nombre)) {
+                    facultad.borrarCarrera(carrera);
+                    return;
+                }
+            }
+        }
+    }
+
+    public void borrarFacultad(String nombre) {
+        Facultad facultadToRemove = null;
+        for (Facultad facultad : facultades) {
+            if (facultad.getNombre().equals(nombre)) {
+                facultadToRemove = facultad;
+                break;
+            }
+        }
+        if (facultadToRemove != null) {
+            facultades.remove(facultadToRemove);
+        }
+    }
+
     public List<Facultad> getFacultades(){
         return facultades;
     }
-    public void setFacultad(){}
-    public void crearFacultad(Facultad facultad){
+
+    public void crearFacultad(String nombre){
+        Facultad facultad = new Facultad(nombre);
         facultades.add(facultad);
     }
-
-    public Facultad fromCarreraGetFacultad(Carrera carrera) {
-        for (Facultad facu : facultades) {
-            if (facu.getCarreras().contains(carrera)) {
-                return facu;
-            }
-        }
-        return null;
-    }
-
-    public void resetFacultades(){
-        facultades = new ArrayList<Facultad>();
-    }
-
 }
