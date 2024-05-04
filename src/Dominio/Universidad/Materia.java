@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Materia {
     private String nombre;
-    private String codigoID;
+    private int codigoID;
     private int cargaHoraria;
     private List<Materia> correlativasAnteriores;
     private List<Materia> correlativasPosteriores;
@@ -21,6 +21,11 @@ public class Materia {
     public void agregarCorrelativaAnterior(Materia materia) {
         correlativasAnteriores.add(materia);
     }
+
+    public void setID(int codigoID) {
+        this.codigoID = codigoID;
+    }
+
 
     public void agregarCorrelativaPosterior(Materia materia) {
         correlativasPosteriores.add(materia);
@@ -46,7 +51,7 @@ public class Materia {
         return nombre;
     }
 
-    public String getCodigoID() {
+    public int getCodigoID() {
         return codigoID;
     }
 

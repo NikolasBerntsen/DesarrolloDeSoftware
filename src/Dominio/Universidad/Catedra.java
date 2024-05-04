@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Catedra {
     private int id;
-    private String aula;
+    private int aula;
     private int capacidad;
     private String turno;
     private String dia;
@@ -23,7 +23,7 @@ public class Catedra {
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
-    public Catedra(int id, String aula, String dia, String turno){
+    public Catedra(int id, int aula, String dia, String turno){
         this.id = id;
         this.aula = aula;
         this.dia = dia;
@@ -50,6 +50,26 @@ public class Catedra {
 
     public void setMateria(Materia materia) {
         this.materia = materia;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
+
+    public void setAula(int aula) {
+        this.aula = aula;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public void setDia(String dia) {
+        this.dia = dia;
     }
 
     @Override

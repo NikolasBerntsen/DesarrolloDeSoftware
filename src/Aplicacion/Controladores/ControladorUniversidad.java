@@ -1,7 +1,9 @@
 package Aplicacion.Controladores;
 
 import Dominio.Universidad.Carrera;
+import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Facultad;
+import Dominio.Universidad.Materia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,36 +34,29 @@ public class ControladorUniversidad {
     }
 
     public void borrarMateria(Carrera carrera, String nombre) {
-        for (Facultad facultad : facultades) {
-            for (Carrera car : facultad.getCarreras()) {
-                if (car.equals(carrera)) {
-                    car.borrarMateria(nombre);
-                    return;
-                }
+        for (Carrera car : getCarreras()) {
+            if (car.equals(carrera)) {
+                car.borrarMateria(nombre);
+                return;
             }
         }
     }
 
-    public void crearCatedra(Carrera carrera, String nombre) {
-        for (Facultad facultad : facultades) {
-            for (Carrera car : facultad.getCarreras()) {
-                if (car.equals(carrera)) {
-                    car.crearCatedra(nombre);
-                    return;
-                }
-            }
-        }
+
+    public void crearCatedra(Materia materia, int ID) {
+        Catedra catedra = new Catedra();
+        catedra.setID(ID);
+        materia.agregarCatedra(catedra);
     }
 
-    public void crearMateria(Carrera carrera, String nombre) {
-        for (Facultad facultad : facultades) {
-            for (Carrera car : facultad.getCarreras()) {
-                if (car.equals(carrera)) {
-                    car.crearMateria(nombre);
-                    return;
-                }
-            }
-        }
+
+    public void crearMateria(Carrera carrera, String nombre, int cargaHoraria,int ID) {
+        Materia materia = new Materia();
+        carrera.agregarMateria(materia);
+        materia.setNombre(nombre);
+        materia.setCargaHoraria(cargaHoraria);
+        materia.setID(ID);
+
     }
 
     public List<Carrera> getCarreras(String nombre) {
@@ -113,8 +108,20 @@ public class ControladorUniversidad {
         return facultades;
     }
 
-    public void crearFacultad(String nombre){
+    public Facultad fromCarreraGetFacultad(Carrera carrera) {
+        for (Facultad facu : facultades) {
+            if (facu.getCarreras().contains(carrera)) {
+                return facu;
+            }
+        }
+        return null;
+    }
+
+            public void crearFacultad(String nombre){
         Facultad facultad = new Facultad(nombre);
         facultades.add(facultad);
+    }
+    public void resetFacultades(){
+        facultades = new ArrayList<Facultad>();
     }
 }
