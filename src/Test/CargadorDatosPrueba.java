@@ -21,7 +21,7 @@ public class CargadorDatosPrueba {
         ControladorUniversidad controladorUniversidad = ControladorUniversidad.getInstancia();
 
         // Crear facultades
-        Facultad facultadInformatica = new Facultad("facultad de informnatica");
+        Facultad facultadInformatica = new Facultad();
         facultadInformatica.setNombre("Facultad de Informática");
         Fecha fechaLimiteInscripcion = new Fecha(30, 6, 2024);
         facultadInformatica.setDiaLimiteInscripcion(fechaLimiteInscripcion);
@@ -60,7 +60,7 @@ public class CargadorDatosPrueba {
         calculo2.agregarCatedra(catedraCalculo2);
 
         // Agregar facultades a la universidad
-        controladorUniversidad.crearFacultad("Facultad de ingenieria");
+        controladorUniversidad.crearFacultad(facultadInformatica);
     }
 
     private static void cargarUsuarios() {

@@ -92,8 +92,8 @@ public class TestControladoraInscripciones {
         ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
         ControladorUniversidad contUni = ControladorUniversidad.getInstancia();
 
-        Facultad facultad = new Facultad("Facultad de ingenieria");
-        contUni.crearFacultad("Facultad de ingenieria");
+        Facultad facultad = new Facultad();
+        contUni.crearFacultad(facultad);
 
         Fecha fechaActual = new Fecha(0,0,0);
         fechaActual.fechaActual();
