@@ -22,36 +22,25 @@ public class ControladorUniversidad {
 
     private List<Facultad> facultades = new ArrayList<Facultad>();
 
-    public void borrarCatedra(Materia materia, int id) {
-        materia.getCatedras().removeIf(catedra -> catedra.getID() == id);
-    }
-
-
-
-
-
-    public void borrarMateria(Carrera carrera, String nombreMateria) {
-        for (Carrera car : getCarreras()) {
-            if (car.equals(carrera)) {
-                List<Materia> materias = car.getMaterias();
-                for (Materia materia : materias) {
-                    if (materia.getNombre().equals(nombreMateria)) {
-                        materias.remove(materia);
-                        return;
-                    }
+    public void borrarCatedra(Carrera carrera, String nombre) {
+        for (Facultad facultad : facultades) {
+            for (Carrera car : facultad.getCarreras()) {
+                if (car.equals(carrera)) {
+                    car.borrarCatedra(nombre);
+                    return;
                 }
             }
         }
     }
 
-    public List<Carrera> getCarreras() {
-        List<Carrera> carreras = new ArrayList<>();
-        for (Facultad facultad : facultades) {
-            carreras.addAll(facultad.getCarreras());
+    public void borrarMateria(Carrera carrera, String nombre) {
+        for (Carrera car : getCarreras()) {
+            if (car.equals(carrera)) {
+                car.borrarMateria(nombre);
+                return;
+            }
         }
-        return carreras;
     }
-
 
 
     public void crearCatedra(Materia materia, int ID) {
@@ -86,7 +75,7 @@ public class ControladorUniversidad {
         for (Facultad facultad : facultades) {
             for (Carrera carrera : facultad.getCarreras()) {
                 if (carrera.getNombre().equals(nombre)) {
-                    facultad.borrarCarrera(nombre);
+                    facultad.borrarCarrera(carrera);
                     return;
                 }
             }
@@ -128,7 +117,7 @@ public class ControladorUniversidad {
         return null;
     }
 
-    public void crearFacultad(String nombre){
+            public void crearFacultad(String nombre){
         Facultad facultad = new Facultad(nombre);
         facultades.add(facultad);
     }

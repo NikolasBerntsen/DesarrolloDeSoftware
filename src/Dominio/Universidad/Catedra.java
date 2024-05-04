@@ -40,14 +40,6 @@ public class Catedra {
         alumnosInscriptos.add(Estudiante);
     }
 
-    public void quitarDocente(Docente docente) {
-        docentes.remove(docente);
-    }
-
-    public void quitarAlumno(Estudiante estudiante) {
-        alumnosInscriptos.remove(estudiante);
-    }
-
     public Materia getMateria() {
         return materia;
     }
@@ -78,10 +70,6 @@ public class Catedra {
 
     public void setDia(String dia) {
         this.dia = dia;
-    }
-
-    public int getID() {
-        return id;
     }
 
     @Override

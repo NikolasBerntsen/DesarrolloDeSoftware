@@ -10,22 +10,12 @@ public class Facultad {
     private List<Carrera> carreras;
     private Fecha diaLimiteDeInscripcion;
 
-    public Facultad(String nombre) {
-        this.nombre=nombre;
+    public Facultad() {
         carreras = new ArrayList<>();
     }
 
     public List<Carrera> getCarreras() {
         return carreras;
-    }
-
-    public void borrarCarrera(String nombre) {
-        for (Carrera carrera : carreras) {
-            if (carrera.getNombre().equals(nombre)) {
-                carreras.remove(carrera);
-                return;
-            }
-        }
     }
 
     public List<Materia> getMaterias(Carrera carrera) {
