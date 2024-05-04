@@ -22,23 +22,22 @@ public class ControladorUniversidad {
 
     private List<Facultad> facultades = new ArrayList<Facultad>();
 
-    public void borrarCatedra(Carrera carrera, String nombre) {
+    public void borrarCatedra(Carrera carrera, String nombre) {}
+
+    public void borrarMateria(Carrera carrera, String nombre) {}
+
+    public void borrarCarrera(String nombre) {}
+
+    public void borrarFacultad(String nombre) {
+        Facultad facultadToRemove = null;
         for (Facultad facultad : facultades) {
-            for (Carrera car : facultad.getCarreras()) {
-                if (car.equals(carrera)) {
-                    car.borrarCatedra(nombre);
-                    return;
-                }
+            if (facultad.getNombre().equals(nombre)) {
+                facultadToRemove = facultad;
+                break;
             }
         }
-    }
-
-    public void borrarMateria(Carrera carrera, String nombre) {
-        for (Carrera car : getCarreras()) {
-            if (car.equals(carrera)) {
-                car.borrarMateria(nombre);
-                return;
-            }
+        if (facultadToRemove != null) {
+            facultades.remove(facultadToRemove);
         }
     }
 
@@ -59,6 +58,16 @@ public class ControladorUniversidad {
 
     }
 
+    public void crearCarrera(Carrera carrera, Facultad facultad){
+        int indiceFacu = facultades.indexOf(facultad);
+        facultad.crearCarrera(carrera);
+        facultades.set(indiceFacu,facultad);
+    }
+
+    public void crearFacultad(Facultad facultad){
+        facultades.add(facultad);
+    }
+
     public List<Carrera> getCarreras(String nombre) {
         List<Carrera> carreras = new ArrayList<>();
         for (Facultad facultad : facultades) {
@@ -69,39 +78,6 @@ public class ControladorUniversidad {
             }
         }
         return carreras;
-    }
-
-    public void borrarCarrera(String nombre) {
-        for (Facultad facultad : facultades) {
-            for (Carrera carrera : facultad.getCarreras()) {
-                if (carrera.getNombre().equals(nombre)) {
-                    facultad.borrarCarrera(carrera);
-                    return;
-                }
-            }
-        }
-    }
-
-    public void crearCarrera(String nombre, String nombreFacultad) {
-        for (Facultad facultad : facultades) {
-            if (facultad.getNombre().equals(nombreFacultad)) {
-                Carrera carrera = new Carrera(nombre);
-                facultad.agregarCarrera(carrera);
-                return;
-            }
-        }
-    }
-    public void borrarFacultad(String nombre) {
-        Facultad facultadToRemove = null;
-        for (Facultad facultad : facultades) {
-            if (facultad.getNombre().equals(nombre)) {
-                facultadToRemove = facultad;
-                break;
-            }
-        }
-        if (facultadToRemove != null) {
-            facultades.remove(facultadToRemove);
-        }
     }
 
     public List<Facultad> getFacultades(){
@@ -117,10 +93,7 @@ public class ControladorUniversidad {
         return null;
     }
 
-            public void crearFacultad(String nombre){
-        Facultad facultad = new Facultad(nombre);
-        facultades.add(facultad);
-    }
+
     public void resetFacultades(){
         facultades = new ArrayList<Facultad>();
     }

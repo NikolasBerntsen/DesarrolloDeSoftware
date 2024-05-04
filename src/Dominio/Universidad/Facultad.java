@@ -14,6 +14,11 @@ public class Facultad {
         carreras = new ArrayList<>();
     }
 
+    public Facultad(String nombre) {
+        carreras = new ArrayList<>();
+        this.nombre = nombre;
+    }
+
     public List<Carrera> getCarreras() {
         return carreras;
     }
