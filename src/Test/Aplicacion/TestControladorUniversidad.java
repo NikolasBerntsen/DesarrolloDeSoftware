@@ -19,19 +19,23 @@ public class TestControladorUniversidad {
             for (int j = 0; j < 5; j++) {
                 Carrera carrera = new Carrera();
             }
-            contUni.crearFacultad(facultad);
+            contUni.crearFacultad(null);
         }
-        Carrera objetivo = new Carrera();
-        List<Facultad> facultades = contUni.getFacultades();
-        contUni.crearCarrera(objetivo, facultades.get(7));
 
-        if (contUni.fromCarreraGetFacultad(objetivo) == facultades.get(7)){
+        contUni.crearFacultad("Facultad de ingenieria");
+        List<Facultad> facultades = contUni.getFacultades();
+        String nombreCarrera = "Ingenieria informatica";
+        String nombreFacultad = "Facultad de ingenieria";
+        contUni.crearCarrera(nombreCarrera, nombreFacultad);
+
+        if (contUni.fromCarreraGetFacultad(nombreCarrera) != null) {
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
-                    ANSI_RESET + "se puede encontrar una facultad en base su carrera");
-        }else{
+                    ANSI_RESET + "se puede encontrar una facultad en base a su carrera");
+        } else {
             System.out.println(ANSI_RED + "Prueba Fallida: " +
-                    ANSI_RESET + "NO se puede encontrar una facultad en base su carrera");
+                    ANSI_RESET + "NO se puede encontrar una facultad en base a su carrera");
         }
         contUni.resetFacultades();
+
     }
 }
