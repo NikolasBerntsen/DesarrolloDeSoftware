@@ -16,13 +16,13 @@ public class ControladorInformes {
         }
         return instancia;
     }
-    private Exportar exportar;
-    public void setExportador (Exportar exportador){
-        this.exportar = exportador;
+    private Exportar documento;
+    public void setDocumento(Exportar tipoDocumento){
+        this.documento = tipoDocumento;
     }
 
     public void exportarInformeCursada(List<Catedra> horarioSemanal){
-        exportar.exportar(horarioSemanal);
+        documento.exportar(horarioSemanal);
     }
 
 }

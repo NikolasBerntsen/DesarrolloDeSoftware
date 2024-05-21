@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Docente extends Usuario {
-    private List<Catedra> horarioSemanal;
+    private List<Catedra> horarioSemanal; // catedras donde esta anotado
 
     public Docente(){
         this.horarioSemanal = new ArrayList<>();
