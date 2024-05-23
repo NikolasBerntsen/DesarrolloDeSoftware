@@ -19,6 +19,12 @@ public class Facultad {
         this.nombre = nombre;
     }
 
+    public Facultad(String nombre, Fecha diaLimiteDeInscripcion) {
+        carreras = new ArrayList<>();
+        this.nombre = nombre;
+        this.diaLimiteDeInscripcion = diaLimiteDeInscripcion;
+    }
+
     public List<Carrera> getCarreras() {
         return carreras;
     }

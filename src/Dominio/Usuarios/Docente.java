@@ -23,6 +23,13 @@ public class Docente extends Usuario {
         ControladorInformes.getInstancia().exportarInformeCursada(horarioSemanal);
 
     }
+    public int getCargaHoraria(){
+        int cargaHoraria = 0;
+        for (Catedra catedra : horarioSemanal){
+            cargaHoraria += catedra.getCargaHoraria();
+        }
+        return cargaHoraria;
+    }
 
     public void agregarCatedra(Catedra catedra) {
         horarioSemanal.add(catedra);

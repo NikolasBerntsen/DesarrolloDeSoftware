@@ -64,4 +64,13 @@ public class Materia {
     }
 
     public void setCargaHoraria(int cargaHoraria) {this.cargaHoraria = cargaHoraria;}
+
+    public void borrarCatedra(int id){
+        for (Catedra catedra: catedras){
+            if (catedra.getId() == id){
+                catedras.remove(catedra);
+                return;
+            }
+        }
+    }
 }

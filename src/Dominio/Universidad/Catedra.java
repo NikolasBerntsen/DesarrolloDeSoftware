@@ -22,6 +22,21 @@ public class Catedra {
         docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
+    public Catedra(
+            int id,
+            int aula,
+            int capacidad,
+            String turno,
+            String dia
+    ) {
+        this.id = id;
+        this.aula = aula;
+        this.capacidad = capacidad;
+        this.turno = turno;
+        this.dia = dia;
+        docentes = new ArrayList<>();
+        alumnosInscriptos = new ArrayList<Estudiante>();
+    }
 
     public Catedra(int id, int aula, String dia, String turno){
         this.id = id;
@@ -72,8 +87,16 @@ public class Catedra {
         this.dia = dia;
     }
 
+    public int getCantidadInscriptos(){
+        return alumnosInscriptos.size();
+    }
+
     @Override
     public String toString(){
         return "\n id:"+id+"\n aula:"+aula+"\n turno:"+turno+"\n dia:"+dia+Integer.valueOf(alumnosInscriptos.size());
+    }
+
+    public int getId() {
+        return id;
     }
 }

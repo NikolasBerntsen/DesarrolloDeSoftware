@@ -10,6 +10,14 @@ public class Carrera {
     public Carrera() {
         materias = new ArrayList<>();
     }
+    public Carrera(
+            String nombreCarrera,
+            int cargaHorariaMaxima
+            ) {
+        this.nombre = nombreCarrera;
+        this.cargaHorariaMaxima = cargaHorariaMaxima;
+        materias = new ArrayList<>();
+    }
 
     public List<Materia> getMaterias() {
         return materias;
