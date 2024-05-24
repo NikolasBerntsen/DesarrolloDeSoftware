@@ -65,4 +65,8 @@ public class Facultad {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void borrarCarrera(Carrera carrera) {
+        carreras.remove(carrera);
+    }
 }

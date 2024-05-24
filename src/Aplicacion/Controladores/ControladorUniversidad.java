@@ -25,9 +25,40 @@ public class ControladorUniversidad {
 
     public void borrarCatedra(Carrera carrera, String nombre) {}
 
+    public void borrarCatedra(int id) {
+        for (Facultad facu: facultades) {
+            for (Carrera carrera : facu.getCarreras()){
+                for (Materia materia : carrera.getMaterias()){
+                    for (Catedra catedra : materia.getCatedras()){
+                        if (catedra.getId() == id){
+                            materia.borrarCatedra(id);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        return;
+    }
+
     public void borrarMateria(Carrera carrera, String nombre) {}
 
-    public void borrarCarrera(String nombre) {}
+    public void borrarMateria(String nombreCarrera, int idMateria) {
+        Carrera carrera = buscarCarrera(nombreCarrera);
+        carrera.borrarMateria(idMateria);
+    }
+
+    public void borrarCarrera(String nombre) {
+        for (Facultad facu: facultades) {
+            for (Carrera carrera : facu.getCarreras()){
+                if (carrera.getNombre() == nombre){
+                    facu.borrarCarrera(carrera);
+                    return;
+                }
+            }
+        }
+        return;
+    }
 
     public void borrarFacultad(String nombre) {
         Facultad facultadToRemove = null;
@@ -41,7 +72,6 @@ public class ControladorUniversidad {
             facultades.remove(facultadToRemove);
         }
     }
-
 
     public void crearCatedra(
             int idMateria,
@@ -60,19 +90,6 @@ public class ControladorUniversidad {
                 dia
         );
         materia.agregarCatedra(catedra);
-    }
-
-    private Materia buscarMateria(int idMateria) {
-        for (Facultad facu: facultades) {
-            for (Carrera carrera : facu.getCarreras()){
-                for (Materia materia : carrera.getMaterias()){
-                    if (materia.getCodigoID() == idMateria){
-                        return materia;
-                    }
-                }
-            }
-        }
-        return null;
     }
 
     public void crearMateria(
@@ -104,26 +121,29 @@ public class ControladorUniversidad {
 
     }
 
-    private Carrera buscarCarrera(String nombrecarrera) {
-        for (Facultad facu: facultades) {
-            for (Carrera carrera : facu.getCarreras()){
-                if (carrera.getNombre() == nombrecarrera){
-                    return carrera;
-                }
-            }
-        }
-        return null;
-    }
-
     public void crearCarrera(Carrera carrera, Facultad facultad){
         int indiceFacu = facultades.indexOf(facultad);
         facultad.crearCarrera(carrera);
         facultades.set(indiceFacu,facultad);
     }
 
+    public void crearCarrera(
+            String nombreFacultad,
+            String nombreCarrera,
+            int cargaHorariaMaxima
+    ) {
+        Facultad facultad = buscarFaculta(nombreFacultad);
+        Carrera carrera = new Carrera(
+                nombreCarrera,
+                cargaHorariaMaxima
+        );
+        facultad.agregarCarrera(carrera);
+    }
+
     public void crearFacultad(Facultad facultad){
         facultades.add(facultad);
     }
+
     public void crearFacultad(String nombre, Fecha diaLimiteDeInscripcion){
         facultades.add(new Facultad(nombre, diaLimiteDeInscripcion));
     }
@@ -142,7 +162,7 @@ public class ControladorUniversidad {
         catedra.setDia(dia);
     }
 
-    private Catedra buscarCatedra(int id) {
+    public Catedra buscarCatedra(int id) {
         for (Facultad facu: facultades) {
             for (Carrera carrera : facu.getCarreras()){
                 for (Materia materia : carrera.getMaterias()){
@@ -156,6 +176,40 @@ public class ControladorUniversidad {
         }
         return null;
     }
+
+    public Materia buscarMateria(int idMateria) {
+        for (Facultad facu: facultades) {
+            for (Carrera carrera : facu.getCarreras()){
+                for (Materia materia : carrera.getMaterias()){
+                    if (materia.getCodigoID() == idMateria){
+                        return materia;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public Carrera buscarCarrera(String nombrecarrera) {
+        for (Facultad facu: facultades) {
+            for (Carrera carrera : facu.getCarreras()){
+                if (carrera.getNombre() == nombrecarrera){
+                    return carrera;
+                }
+            }
+        }
+        return null;
+    }
+
+    public Facultad buscarFaculta(String nombreFacultad) {
+        for (Facultad facu: facultades) {
+            if (facu.getNombre() == nombreFacultad) {
+                return facu;
+            }
+        }
+        return null;
+    }
+
 
     public List<Carrera> getCarreras(String nombre) {
         List<Carrera> carreras = new ArrayList<>();
@@ -182,45 +236,8 @@ public class ControladorUniversidad {
         return null;
     }
 
-
     public void resetFacultades(){
         facultades = new ArrayList<Facultad>();
     }
 
-    public void crearCarrera(
-            String nombreFacultad,
-            String nombreCarrera,
-            int cargaHorariaMaxima
-    ) {
-            Facultad facultad = buscarFaculta(nombreFacultad);
-            Carrera carrera = new Carrera(
-                    nombreCarrera,
-                    cargaHorariaMaxima
-            );
-            facultad.agregarCarrera(carrera);
-        }
-    private Facultad buscarFaculta(String nombreFacultad) {
-        for (Facultad facu: facultades) {
-            if (facu.getNombre() == nombreFacultad) {
-                return facu;
-            }
-        }
-        return null;
-    }
-
-    public void borrarCatedra(int id) {
-        for (Facultad facu: facultades) {
-            for (Carrera carrera : facu.getCarreras()){
-                for (Materia materia : carrera.getMaterias()){
-                    for (Catedra catedra : materia.getCatedras()){
-                        if (catedra.getId() == id){
-                            materia.borrarCatedra(id);
-                            return;
-                        }
-                    }
-                }
-            }
-        }
-        return;
-    }
 }

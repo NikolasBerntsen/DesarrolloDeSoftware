@@ -6,6 +6,8 @@ import Dominio.Usuarios.*;
 import Dominio.Universidad.*;
 import Dominio.utils.Fecha;
 
+import java.util.List;
+
 public class FachadaSistema {
 
     static public void sincronizarDatos() {
@@ -67,7 +69,9 @@ public class FachadaSistema {
                 );
     }
     static public void actualizarMateria() {}
-    static public void eliminarMateria() {}
+    static public void eliminarMateria(String nombreCarrera, int idMateria) {
+        ControladorUniversidad.getInstancia().borrarMateria(nombreCarrera, idMateria);
+    }
 
     // Gestión de carreras
     static public void crearCarrera(
@@ -83,7 +87,9 @@ public class FachadaSistema {
                 );
     }
     static public void actualizarCarrera() {}
-    static public void eliminarCarrera() {}
+    static public void eliminarCarrera(String nombreCarrera) {
+        ControladorUniversidad.getInstancia().borrarCarrera(nombreCarrera);
+    }
 
     // Gestión de facultades
     static public void crearFacultad(
@@ -94,11 +100,17 @@ public class FachadaSistema {
                 .crearFacultad(nombre,diaLimiteDeInscripcion);
     }
     static public void actualizarFacultad() {}
-    static public void eliminarFacultad() {}
+    static public void eliminarFacultad(String nombreFacultad) {
+        ControladorUniversidad.getInstancia().borrarFacultad(nombreFacultad);
+    }
 
     // Inscripción de estudiantes
-    static public void mostrarCatedrasDisponibles() {}
-    static public void registrarInscripcionEstudiante() {}
+    static public List<Catedra> mostrarCatedrasDisponibles(int idMateria) {
+        return FachadaInscripcion.catedrasDisponibles(idMateria);
+    }
+    static public void registrarInscripcionEstudiante(Catedra catedra, Estudiante estudiante)  {
+        FachadaInscripcion.InscribirseCatedra(catedra, estudiante);
+    }// Primitivos
 
     // Gestión de docentes
     static public void registrarDisponibilidadDocente() {}
@@ -108,6 +120,8 @@ public class FachadaSistema {
 
 
     // Integración con otros sistemas
-    static public void cargaHorariaDocente() {}
-    static public void cantidadInscriptosPorCatedra() {}
+    static public void cargaHorariaDocente(String legajo) {}
+    static public int cantidadInscriptosPorCatedra(int idCatedra) {
+        return ControladorUniversidad.getInstancia().buscarCatedra(idCatedra).getCantidadInscriptos();
+    }
 }

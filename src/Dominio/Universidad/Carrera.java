@@ -47,4 +47,12 @@ public class Carrera {
         this.nombre = nombre;
     }
 
+    public void borrarMateria(int idMateria) {
+        for (Materia materia : materias){
+            if (materia.getCodigoID() == idMateria){
+                materias.remove(materia);
+                return;
+            }
+        }
+    }
 }
