@@ -3,6 +3,7 @@ package Dominio.Universidad;
 
 import Dominio.Usuarios.Docente;
 import Dominio.Usuarios.Estudiante;
+import Dominio.utils.Turno;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,7 @@ public class Catedra {
     private int id;
     private int aula;
     private int capacidad;
-    private String turno;
+    private Turno turno;
     private String dia;
     private List<Docente> docentes;
     private List<Estudiante> alumnosInscriptos;
@@ -27,22 +28,24 @@ public class Catedra {
             int aula,
             int capacidad,
             String turno,
+            int HoraInicio,
+            int HoraFinal,
             String dia
     ) {
         this.id = id;
         this.aula = aula;
         this.capacidad = capacidad;
-        this.turno = turno;
+        setTurno(turno,HoraInicio,HoraFinal);
         this.dia = dia;
         docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
-    public Catedra(int id, int aula, String dia, String turno){
+    public Catedra(int id, int aula, String dia, String turno, int HoraInicio, int HoraFinal){
         this.id = id;
         this.aula = aula;
         this.dia = dia;
-        this.turno = turno;
+        setTurno(turno,HoraInicio,HoraFinal);
         docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
@@ -79,8 +82,10 @@ public class Catedra {
         this.capacidad = capacidad;
     }
 
-    public void setTurno(String turno) {
-        this.turno = turno;
+    public void setTurno(String turno, int HoraInicio, int HoraFinal) {
+        Turno turno1 = new Turno();
+        turno1.cargarTurno(turno, HoraInicio, HoraFinal);
+        this.turno = turno1;
     }
 
     public void setDia(String dia) {

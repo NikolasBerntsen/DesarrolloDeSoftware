@@ -152,13 +152,11 @@ public class ControladorUniversidad {
             int id,
             int aula,
             int capacidad,
-            String turno,
             String dia
     ) {
         Catedra catedra = buscarCatedra(id);
         catedra.setAula(aula);
         catedra.setCapacidad(capacidad);
-        catedra.setTurno(turno);
         catedra.setDia(dia);
     }
 

@@ -37,7 +37,6 @@ public class FachadaSistema {
         int id,
         int aula,
         int capacidad,
-        String turno,
         String dia
     ) {
         ControladorUniversidad.getInstancia()
@@ -45,7 +44,6 @@ public class FachadaSistema {
                         id,
                         aula,
                         capacidad,
-                        turno,
                         dia
                 );
     }
