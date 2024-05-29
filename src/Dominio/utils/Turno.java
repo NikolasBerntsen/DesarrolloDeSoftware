@@ -1,9 +1,9 @@
 package Dominio.utils;
 
 public class Turno {
-    String turno;
-    int horaInicio;
-    int horaFin;
+    private String turno;
+    private int horaInicio;
+    private int horaFin;
 
     public void cargarTurno(String turno, int horaI, int HoraF){
 
