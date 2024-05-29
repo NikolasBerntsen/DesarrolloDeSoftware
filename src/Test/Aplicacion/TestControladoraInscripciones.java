@@ -1,6 +1,7 @@
 package Test.Aplicacion;
 
 import Aplicacion.Controladores.ControladorUniversidad;
+import Aplicacion.Controladores.ControladorUsuarios;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
@@ -18,37 +19,43 @@ public class TestControladoraInscripciones {
 
     static public void testValidarCorrelativas(){
         //given
-        Materia co0 = new Materia();
-        co0.setNombre("algebra");
-        Materia co1 = new Materia();
-        co1.setNombre("calculo1");
-        Materia co2 = new Materia();
-        co2.setNombre("calculo2");
-        Materia materia = new Materia();
-        materia.agregarCorrelativaAnterior(co0);
-        materia.agregarCorrelativaAnterior(co1);
-        materia.agregarCorrelativaAnterior(co2);
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+        ControladoraInscripciones insc = ControladoraInscripciones.getInstancia();
 
-        //try
-        ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
+        Uni.crearFacultad("FAIN",new Fecha(0,0,0));
+        Uni.crearCarrera("FAIN","Ing.Informatica", 35);
+
+        Uni.crearMateria("Ing.Informatica","algebra",35,1);
+        Uni.crearMateria("Ing.Informatica","calculo1",35,2);
+        Uni.crearMateria("Ing.Informatica","calculo2",40,3);
+
+        int idMateria = 123;
+        Uni.crearMateria("Ing.Informatica", "Simulacion Virtual", 35, idMateria);
+        Uni.agregarCorrelativa(idMateria, 1);
+        Uni.agregarCorrelativa(idMateria, 2);
+        Uni.agregarCorrelativa(idMateria, 3);
+
+        int legajo = 1234;
+        users.cargarEstudiante("pepe", legajo, 1234, "Ing.Informatica");
+
         boolean resultado = true;
-        Estudiante estudiante = new Estudiante();
-        if (cont.validarCorrelativas(estudiante, materia)){
+        if (insc.validarCorrelativas(legajo, idMateria)){
             resultado = false;
             System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :0");
         }
-        estudiante.addAprobada(co0);
-        if (cont.validarCorrelativas(estudiante, materia)){
+        users.addAprobada(legajo,1);
+        if (insc.validarCorrelativas(legajo, idMateria)){
             resultado = false;
             System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :1");
         }
-        estudiante.addAprobada(co1);
-        if (cont.validarCorrelativas(estudiante, materia)){
+        users.addAprobada(legajo,2);
+        if (insc.validarCorrelativas(legajo, idMateria)){
             resultado = false;
             System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante se puede anotar a una materia SIN CUMPLIR sus correlativas :2");
         }
-        estudiante.addAprobada(co2);
-        if (!cont.validarCorrelativas(estudiante, materia)){
+        users.addAprobada(legajo,3);
+        if (!insc.validarCorrelativas(legajo, idMateria)){
             resultado = false;
             System.out.println(ANSI_RED + "fallo una prueba: " + ANSI_RESET + "un estudiante NO se puede anotar a una materia CUMPLIENDO sus correlativas");
         }
@@ -56,57 +63,62 @@ public class TestControladoraInscripciones {
         if (resultado){
             System.out.println(ANSI_GREEN + "Prueba Superada: " + ANSI_RESET + "los estudiantes deben cumplir con las correlativas para anotarse a una materia");
         }
+        users.reset();
+        Uni.reset();
     }
 
     static public void testValidarCargaHoraria(){
-        // given
-        Carrera carrera = new Carrera();
-        carrera.setCargaHorariaMaxima(70);
-        Materia materia0 = new Materia();
-        materia0.setCargaHoraria(35);
-        Materia materia35 = new Materia();
-        materia35.setCargaHoraria(35);
-        Materia materia40 = new Materia();
-        materia40.setCargaHoraria(40);
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+        ControladoraInscripciones insc = ControladoraInscripciones.getInstancia();
 
-        Estudiante estudiante = new Estudiante();
-        estudiante.setCarrera(carrera);
-        Catedra catedra = new Catedra();
-        catedra.setMateria(materia0);
-        estudiante.inscribirA(catedra);
+        Uni.crearFacultad("FAIN",new Fecha(0,0,0));
+        Uni.crearCarrera("FAIN","Ing.Informatica", 70);
+
+        // given
+        Uni.crearMateria("Ing.Informatica","algebra",35,0);
+        Uni.crearMateria("Ing.Informatica","Elementos de algebra",35,1);
+        Uni.crearMateria("Ing.Informatica","Calculo I",40,2);
+
+        int legajo = 1234;
+        users.cargarEstudiante("pepe",legajo,4321, "Ing.Informatica");
+
+        Uni.crearCatedra(0,0,304,60,"noche",1800,2200,"martes");
+
+        users.inscribirEstudiateA(legajo,0);
 
         // try
 
-        ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
-
-        if (cont.validarCargaHoraria(estudiante,materia40)){
-            System.out.println(ANSI_RED + "Fallo una prueba: " + ANSI_RESET + "Un estudiante NO se puede anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
+        if (!insc.validarCargaHoraria(legajo,1)){
+            System.out.println(ANSI_RED + "Fallo una prueba: " + ANSI_RESET + "Un estudiante NO se deberian anotar a una materia si con esta SUPERA la carga horaria máxima de la carrera");
         }
 
-        if (cont.validarCargaHoraria(estudiante,materia35)){
+        if (!insc.validarCargaHoraria(legajo,2)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " + ANSI_RESET + "Los estudiantes se pueden anotar a una materia si con esta NO SUPERAN la carga horaria máxima de la carrera");
         }
+        users.reset();
+        Uni.reset();
     }
 
     static public void testValidarDiaInscripcion(){
         ControladoraInscripciones cont = ControladoraInscripciones.getInstancia();
-        ControladorUniversidad contUni = ControladorUniversidad.getInstancia();
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
 
-        Facultad facultad = new Facultad();
-        contUni.crearFacultad(facultad);
+        String nombreCarrera = "Ing.Informatica";
+        String nombreFacultad = "FAIN";
+        Fecha fechaLimite = new Fecha(0,0,0);
+        fechaLimite.fechaActual();
+        Uni.crearFacultad(nombreFacultad,fechaLimite);
+        Uni.crearCarrera("FAIN",nombreCarrera,30);
 
         Fecha fechaActual = new Fecha(0,0,0);
         fechaActual.fechaActual();
 
-        Fecha fechaLimite = new Fecha(0,0,0);
+        Carrera carrera = Uni.buscarCarrera(nombreCarrera);
+        Facultad facultad = Uni.buscarFaculta(nombreFacultad);
 
-        Carrera carrera = new Carrera();
-        carrera.setNombre("Ingenieria Informatica");
-        facultad.agregarCarrera(carrera);
-
-        fechaLimite.fechaActual();
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(cont.validarDiaInscripcion(carrera)){
+        if(cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "sobre la fecha limite, te podes anotar");
         }else{
@@ -116,7 +128,7 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(1,0,0);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(cont.validarDiaInscripcion(carrera)){
+        if(cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un dia antes de la fecha limite, te podes anotar");
         }else{
@@ -126,7 +138,7 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(-1,1,0);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(cont.validarDiaInscripcion(carrera)){
+        if(cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un mes antes de la fecha limite, te podes anotar");
         }else{
@@ -136,7 +148,7 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(0,-1,1);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(cont.validarDiaInscripcion(carrera)){
+        if(cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un año antes de la fecha limite, te podes anotar");
         }else{
@@ -146,7 +158,7 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(0,0,-2);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(!cont.validarDiaInscripcion(carrera)){
+        if(!cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un año despues de la fecha limite,NO te podes anotar");
         }else{
@@ -156,7 +168,7 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(0,-1,1);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(!cont.validarDiaInscripcion(carrera)){
+        if(!cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un mes despues de la fecha limite,NO te podes anotar");
         }else{
@@ -166,13 +178,13 @@ public class TestControladoraInscripciones {
 
         fechaLimite.restarFecha(-1,1,0);
         facultad.setDiaLimiteInscripcion(fechaLimite);
-        if(!cont.validarDiaInscripcion(carrera)){
+        if(!cont.validarDiaInscripcion(nombreCarrera)){
             System.out.println(ANSI_GREEN + "Prueba Superada: " +
                     ANSI_RESET + "un dia despues de la fecha limite,NO te podes anotar");
         }else{
             System.out.println(ANSI_RED + "Prueba Fallida: " +
                     ANSI_RESET + "un dia despues de la fecha limite, te podes anotar");
         }
-        contUni.resetFacultades();
+        Uni.reset();
     }
 }

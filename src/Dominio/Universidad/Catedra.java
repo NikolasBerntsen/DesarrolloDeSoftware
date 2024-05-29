@@ -28,24 +28,31 @@ public class Catedra {
             int aula,
             int capacidad,
             String turno,
-            int HoraInicio,
-            int HoraFinal,
+            int horaInicio,
+            int horaFinal,
             String dia
     ) {
         this.id = id;
         this.aula = aula;
         this.capacidad = capacidad;
-        setTurno(turno,HoraInicio,HoraFinal);
+        setTurno(turno,horaInicio,horaFinal);
         this.dia = dia;
         docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
-    public Catedra(int id, int aula, String dia, String turno, int HoraInicio, int HoraFinal){
+    public Catedra(
+            int id,
+            int aula,
+            String dia,
+            String turno,
+            int horaInicio,
+            int horaFinal
+    ){
         this.id = id;
         this.aula = aula;
         this.dia = dia;
-        setTurno(turno,HoraInicio,HoraFinal);
+        setTurno(turno,horaInicio,horaFinal);
         docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }

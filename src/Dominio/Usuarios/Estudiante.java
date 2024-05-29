@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Estudiante extends Usuario {
-    private Carrera carrera;
+    private String carrera;
     private List<Materia> materiasAprobadas;
     private List<Catedra> catedrasInscriptas;
     private int cargaHoraria;
@@ -18,7 +18,16 @@ public class Estudiante extends Usuario {
         catedrasInscriptas = new ArrayList<>();
     }
 
-    public Carrera getCarrera() {
+    public Estudiante(String nombre, int legajo, int DNI, String carrera){
+        this.nombre = nombre;
+        this.legajo = legajo;
+        this.DNI = DNI;
+        this.carrera = carrera;
+        materiasAprobadas = new ArrayList<>();
+        catedrasInscriptas = new ArrayList<>();
+    }
+
+    public String getCarrera() {
         return carrera;
     }
 
@@ -52,7 +61,7 @@ public class Estudiante extends Usuario {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public void setCarrera(Carrera carrera) {
+    public void setCarrera(String carrera) {
         this.carrera = carrera;
     }
 

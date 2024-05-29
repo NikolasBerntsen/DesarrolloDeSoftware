@@ -27,13 +27,19 @@ public class ControladoraInscripciones {
         this.metodoPago = metodoPago;
     }
 
-    public boolean validarCorrelativas(Estudiante estudiante, Materia materia){
+    public boolean validarCorrelativas(int legajo, int idMateria){
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+
+        Estudiante estudiante = users.getEstudiante(legajo);
+        Materia materia = Uni.buscarMateria(idMateria);
+
         List<Materia> correlativas = materia.getCorrelativasAnteriores();
-        List<Materia> aprovadas = estudiante.getMateriasAprobadas();
+        List<Materia> aprobadas = estudiante.getMateriasAprobadas();
         for (Materia correlativa : correlativas){
             boolean esta = false;
-            for(Materia matAprovada : aprovadas){
-                if (matAprovada.getNombre().equals(correlativa.getNombre())) {
+            for(Materia matAprobada : aprobadas){
+                if (matAprobada.getNombre().equals(correlativa.getNombre())) {
                     esta = true;
                     break;
                 }
@@ -44,24 +50,43 @@ public class ControladoraInscripciones {
         }
         return true;
     }
-    public boolean validarCargaHoraria(Estudiante estudiante, Materia materia){
-        return ((estudiante.getCargaHoraria() + materia.getCargaHoraria()) <= estudiante.getCarrera().getCargaHorariaMaxima());
+    public boolean validarCargaHoraria(int legajo, int idMateria){
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+
+        Estudiante estudiante = users.getEstudiante(legajo);
+        Carrera carrera = Uni.buscarCarrera(estudiante.getCarrera());
+        Materia materia = Uni.buscarMateria(idMateria);
+
+        return ((estudiante.getCargaHoraria() + materia.getCargaHoraria()) <= carrera.getCargaHorariaMaxima());
     }
-    public void inscribirseEnCatedra(Estudiante estudiante, Catedra catedra){
+
+    public void inscribirseEnCatedra(int legajo, int idCatedra){
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+
+        Catedra catedra = Uni.buscarCatedra(idCatedra);
+        Estudiante estudiante = users.getEstudiante(legajo);
+
         estudiante.inscribirA(catedra);
         catedra.agregarAlumno(estudiante);
     }
-    public void bajaDeMateria(Estudiante estudiante, Catedra catedra){
-        estudiante.bajarDe(catedra);
+    public void bajaDeMateria(int legajo, int idCatedra){
+        ControladorUsuarios.getInstancia()
+                .getEstudiante(legajo)
+                    .bajarDe(ControladorUniversidad.getInstancia()
+                        .buscarCatedra(idCatedra));
     }
     public void pagar(int monto){
         metodoPago.pagar(monto);
     }
-    public boolean validarDiaInscripcion(Carrera carrera){
+    public boolean validarDiaInscripcion(String nombreCarrera){
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+        Facultad facultad = Uni.fromCarreraGetFacultad(nombreCarrera);
+
         Fecha fechaActual = new Fecha(0,0,0);
         fechaActual.fechaActual();
 
-        Facultad facultad = ControladorUniversidad.getInstancia().fromCarreraGetFacultad(carrera);
         return fechaActual.esAnteriorA(facultad.getDiaLimiteDeInscripcion());
     }
 

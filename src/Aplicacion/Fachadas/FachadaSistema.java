@@ -21,6 +21,8 @@ public class FachadaSistema {
             int aula,
             int capacidad,
             String turno,
+            int horaInicio,
+            int horaFinal,
             String dia
     ) {
         ControladorUniversidad.getInstancia()
@@ -30,6 +32,8 @@ public class FachadaSistema {
                  aula,
                  capacidad,
                  turno,
+                 horaInicio,
+                 horaFinal,
                  dia
         );
     }
@@ -106,8 +110,8 @@ public class FachadaSistema {
     static public List<Catedra> mostrarCatedrasDisponibles(int idMateria) {
         return FachadaInscripcion.catedrasDisponibles(idMateria);
     }
-    static public void registrarInscripcionEstudiante(Catedra catedra, Estudiante estudiante)  {
-        FachadaInscripcion.InscribirseCatedra(catedra, estudiante);
+    static public void registrarInscripcionEstudiante(int legajo, int idCatedra)  {
+        FachadaInscripcion.InscribirseCatedra(legajo, idCatedra);
     }// Primitivos
 
     // Gestión de docentes

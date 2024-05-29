@@ -1,3 +1,5 @@
+package Test;
+
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Facultad;
@@ -18,7 +20,7 @@ public class CargadorDatosPrueba {
 
     private static void cargarUniversidad() {
 
-        ControladorUniversidad controladorUniversidad = ControladorUniversidad.getInstancia();
+       /* ControladorUniversidad controladorUniversidad = ControladorUniversidad.getInstancia();
 
         // Crear facultades
         Facultad facultadInformatica = new Facultad();
@@ -61,9 +63,11 @@ public class CargadorDatosPrueba {
 
         // Agregar facultades a la universidad
         controladorUniversidad.crearFacultad(facultadInformatica);
+        */
     }
 
     private static void cargarUsuarios() {
+        /*
         // Crear estudiantes
         Estudiante estudiante1 = new Estudiante();
         estudiante1.setNombre("Juan");
@@ -72,8 +76,8 @@ public class CargadorDatosPrueba {
 
         // Asignar carrera a los estudiantes
         Carrera carreraInformatica = ControladorUniversidad.getInstancia().getFacultades().get(0).getCarreras().get(0);
-        estudiante1.setCarrera(carreraInformatica);
-        estudiante2.setCarrera(carreraInformatica);
+        estudiante1.setCarrera(carreraInformatica.getNombre());
+        estudiante2.setCarrera(carreraInformatica.getNombre());
 
         // Crear docentes
         Docente docente1 = new Docente();
@@ -86,6 +90,7 @@ public class CargadorDatosPrueba {
         List<Catedra> catedrasDocente2 = carreraInformatica.getMaterias().get(1).getCatedras();
         docente1.agregarCatedra(catedrasDocente1.get(0));
         docente2.agregarCatedra(catedrasDocente2.get(0));
+        */
     }
 
 }

@@ -8,15 +8,15 @@ public class TestControladorInformes {
     static public void exportarInformeCursada(){
         Docente docente = new Docente();
 
-        Catedra catedra1 = new Catedra(0,314,"martes","tarde");
+        Catedra catedra1 = new Catedra(0,314,"martes","tarde",1400,1800);
         for (int i = 0; i < 10; i++) {
             catedra1.agregarAlumno(new Estudiante());
         }
-        Catedra catedra2 = new Catedra(55,601,"jueves","mañana");
+        Catedra catedra2 = new Catedra(55,601,"jueves","mañana",745,1145);
         for (int i = 0; i < 22; i++) {
             catedra2.agregarAlumno(new Estudiante());
         }
-        Catedra catedra3 = new Catedra(12,764,"lunes","virtual");
+        Catedra catedra3 = new Catedra(12,764,"lunes","virtual",815,1215);
         for (int i = 0; i < 66; i++) {
             catedra3.agregarAlumno(new Estudiante());
         }

@@ -1,6 +1,7 @@
 package Aplicacion.Fachadas;
 
 import Aplicacion.Controladores.ControladorUniversidad;
+import Aplicacion.Controladores.ControladorUsuarios;
 import Aplicacion.Controladores.ControladoraInscripciones;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
@@ -13,14 +14,20 @@ public class FachadaInscripcion {
     static public List<Catedra> catedrasDisponibles(int idMateria){
         return ControladorUniversidad.getInstancia().buscarMateria(idMateria).getCatedras();
     }
-    static public void InscribirseCatedra(Catedra catedra, Estudiante estudiante){
-        ControladoraInscripciones ConIns = ControladoraInscripciones.getInstancia();
+    static public void InscribirseCatedra(int legajo, int idCatedra){
+        ControladoraInscripciones Inscripciones = ControladoraInscripciones.getInstancia();
+        ControladorUsuarios users = ControladorUsuarios.getInstancia();
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+
+        Estudiante estudiante = users.getEstudiante(legajo);
+        Catedra catedra = Uni.buscarCatedra(idCatedra);
+
         Materia materia = catedra.getMateria();
-        Carrera carrera = estudiante.getCarrera();
-        ConIns.validarDiaInscripcion(carrera);
-        ConIns.validarCargaHoraria(estudiante, materia);
-        ConIns.validarCorrelativas(estudiante, materia);
-        ConIns.inscribirseEnCatedra(estudiante, catedra);
-        ConIns.pagar(500);
+
+        Inscripciones.validarDiaInscripcion(estudiante.getCarrera());
+        Inscripciones.validarCargaHoraria(legajo, idCatedra);
+        Inscripciones.validarCorrelativas(legajo, materia.getCodigoID());
+        Inscripciones.inscribirseEnCatedra(legajo, idCatedra);
+        Inscripciones.pagar(500);
     }
 }

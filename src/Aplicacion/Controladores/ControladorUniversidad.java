@@ -23,8 +23,6 @@ public class ControladorUniversidad {
 
     private List<Facultad> facultades = new ArrayList<Facultad>();
 
-    public void borrarCatedra(Carrera carrera, String nombre) {}
-
     public void borrarCatedra(int id) {
         for (Facultad facu: facultades) {
             for (Carrera carrera : facu.getCarreras()){
@@ -41,8 +39,6 @@ public class ControladorUniversidad {
         return;
     }
 
-    public void borrarMateria(Carrera carrera, String nombre) {}
-
     public void borrarMateria(String nombreCarrera, int idMateria) {
         Carrera carrera = buscarCarrera(nombreCarrera);
         carrera.borrarMateria(idMateria);
@@ -51,7 +47,7 @@ public class ControladorUniversidad {
     public void borrarCarrera(String nombre) {
         for (Facultad facu: facultades) {
             for (Carrera carrera : facu.getCarreras()){
-                if (carrera.getNombre() == nombre){
+                if (carrera.getNombre().equals(nombre)){
                     facu.borrarCarrera(carrera);
                     return;
                 }
@@ -79,6 +75,8 @@ public class ControladorUniversidad {
             int aula,
             int capacidad,
             String turno,
+            int horaInicio,
+            int horaFinal,
             String dia
     ) {
         Materia materia = buscarMateria(idMateria);
@@ -87,8 +85,11 @@ public class ControladorUniversidad {
                 aula,
                 capacidad,
                 turno,
+                horaInicio,
+                horaFinal,
                 dia
         );
+        catedra.setMateria(materia);
         materia.agregarCatedra(catedra);
     }
 
@@ -107,26 +108,6 @@ public class ControladorUniversidad {
 
     }
 
-    public void crearMateria(
-            Carrera carrera,
-            String nombre,
-            int cargaHoraria,
-            int ID
-    ) {
-        Materia materia = new Materia();
-        carrera.agregarMateria(materia);
-        materia.setNombre(nombre);
-        materia.setCargaHoraria(cargaHoraria);
-        materia.setID(ID);
-
-    }
-
-    public void crearCarrera(Carrera carrera, Facultad facultad){
-        int indiceFacu = facultades.indexOf(facultad);
-        facultad.crearCarrera(carrera);
-        facultades.set(indiceFacu,facultad);
-    }
-
     public void crearCarrera(
             String nombreFacultad,
             String nombreCarrera,
@@ -138,10 +119,6 @@ public class ControladorUniversidad {
                 cargaHorariaMaxima
         );
         facultad.agregarCarrera(carrera);
-    }
-
-    public void crearFacultad(Facultad facultad){
-        facultades.add(facultad);
     }
 
     public void crearFacultad(String nombre, Fecha diaLimiteDeInscripcion){
@@ -191,7 +168,7 @@ public class ControladorUniversidad {
     public Carrera buscarCarrera(String nombrecarrera) {
         for (Facultad facu: facultades) {
             for (Carrera carrera : facu.getCarreras()){
-                if (carrera.getNombre() == nombrecarrera){
+                if (carrera.getNombre().equals(nombrecarrera)){
                     return carrera;
                 }
             }
@@ -201,19 +178,20 @@ public class ControladorUniversidad {
 
     public Facultad buscarFaculta(String nombreFacultad) {
         for (Facultad facu: facultades) {
-            if (facu.getNombre() == nombreFacultad) {
+            if (facu.getNombre().equals(nombreFacultad)) {
                 return facu;
             }
         }
+        System.out.println(nombreFacultad);
         return null;
     }
 
 
-    public List<Carrera> getCarreras(String nombre) {
+    public List<Carrera> getCarrerasDesde(String nombreFacultad) {
         List<Carrera> carreras = new ArrayList<>();
         for (Facultad facultad : facultades) {
             for (Carrera carrera : facultad.getCarreras()) {
-                if (carrera.getNombre().equals(nombre)) {
+                if (carrera.getNombre().equals(nombreFacultad)) {
                     carreras.add(carrera);
                 }
             }
@@ -225,17 +203,25 @@ public class ControladorUniversidad {
         return facultades;
     }
 
-    public Facultad fromCarreraGetFacultad(Carrera carrera) {
+    public Facultad fromCarreraGetFacultad(String nombreCarrera) {
         for (Facultad facu : facultades) {
-            if (facu.getCarreras().contains(carrera)) {
-                return facu;
+            for (Carrera carrera : facu.getCarreras()){
+                if (carrera.getNombre().equals(nombreCarrera)) {
+                    return facu;
+                }
             }
         }
         return null;
     }
 
-    public void resetFacultades(){
-        facultades = new ArrayList<Facultad>();
+    public void agregarCorrelativa(int idMateria,int idCorrelativa){
+        Materia materia = buscarMateria(idMateria);
+        Materia correlativa = buscarMateria(idCorrelativa);
+        materia.agregarCorrelativaAnterior(correlativa);
+    }
+
+    public void reset(){
+        facultades.clear();
     }
 
 }

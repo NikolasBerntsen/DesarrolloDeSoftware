@@ -16,4 +16,16 @@ public abstract class Usuario {
     public void setDNI(int DNI) {
         this.DNI = DNI;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getLegajo() {
+        return legajo;
+    }
+
+    public int getDNI() {
+        return DNI;
+    }
 }
