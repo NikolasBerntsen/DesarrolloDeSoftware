@@ -5,6 +5,7 @@ import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Docente;
 import Dominio.Usuarios.Estudiante;
+import Dominio.Usuarios.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,9 +52,9 @@ public class ControladorUsuarios {
     }
 
     public Estudiante getEstudiante(int legajo) {
-        for (Estudiante auxStudent : estudiates){
-            if (auxStudent.getLegajo() == legajo){
-                return auxStudent;
+        for (Estudiante usuario : estudiates){
+            if (usuario.getLegajo() == legajo){
+                return usuario;
             }
         }
         return null;
@@ -71,5 +72,14 @@ public class ControladorUsuarios {
     public void addAprobada(int legajo, int idMateria) {
         Materia materia = ControladorUniversidad.getInstancia().buscarMateria(idMateria);
         getEstudiante(legajo).addAprobada(materia);
+    }
+
+    public Docente getDocente(int legajo){
+        for (Docente usuario : docentes){
+            if (usuario.getLegajo() == legajo){
+                return usuario;
+            }
+        }
+        return null;
     }
 }
