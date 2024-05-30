@@ -54,9 +54,11 @@ public class Docente extends Usuario {
 
     public void addPreferencia(String dia,String turno){
         preferencia.habilitarHorario(dia,turno);
+        disponibilidad.mezclarMatrices(preferencia.getMatriz());
     }
     public void removePreferencia(String dia,String turno){
         preferencia.deshabilitarHorario(dia,turno);
+        disponibilidad.mezclarMatrices(preferencia.getMatriz());
     }
 
     public boolean estaDisponible(String dia,String turno){
@@ -65,5 +67,6 @@ public class Docente extends Usuario {
 
     public void setPreferencia(boolean[][] matrizHorario) {
         preferencia.setMatriz(matrizHorario);
+        disponibilidad.mezclarMatrices(preferencia.getMatriz());
     }
 }

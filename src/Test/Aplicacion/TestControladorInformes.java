@@ -1,8 +1,11 @@
 package Test.Aplicacion;
 
+import Aplicacion.Controladores.ControladorInformes;
 import Dominio.Universidad.Catedra;
 import Dominio.Usuarios.Docente;
 import Dominio.Usuarios.Estudiante;
+import Infraestructura.Exportar.Excel;
+import Infraestructura.Exportar.PDF;
 
 public class TestControladorInformes {
     static public void exportarInformeCursada(){
@@ -25,6 +28,9 @@ public class TestControladorInformes {
         docente.agregarCatedra(catedra2);
         docente.agregarCatedra(catedra3);
 
+        ControladorInformes.getInstancia().setDocumento(new PDF());
+        docente.crearInforme();
+        ControladorInformes.getInstancia().setDocumento(new Excel());
         docente.crearInforme();
     }
 }

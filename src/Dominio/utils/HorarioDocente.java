@@ -50,11 +50,14 @@ public class HorarioDocente {
         matriz[xy[0]][xy[1]] = false;
     }
 
-    public void mezclarMatrices(boolean[][] matras){
+    public void mezclarMatrices(boolean[][] matriz){
         for(int i=0;i<5;i++){
             for (int j = 0; j < 3; j++) {
-                if (!matriz[i][j] && matras[i][j]){
-                    matriz[i][j] = true;
+                if (!this.matriz[i][j] && matriz[i][j]){
+                    this.matriz[i][j] = true;
+                }
+                if (this.matriz[i][j] && !matriz[i][j]){
+                    this.matriz[i][j] = false;
                 }
             }
         }
@@ -62,5 +65,9 @@ public class HorarioDocente {
 
     public void setMatriz(boolean[][] matriz) {
         this.matriz = matriz;
+    }
+
+    public boolean[][] getMatriz() {
+        return matriz;
     }
 }

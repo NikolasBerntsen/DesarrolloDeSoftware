@@ -8,6 +8,7 @@ import Infraestructura.MedioDePago.MercadoPago;
 import Test.Aplicacion.TestControladorInformes;
 import Test.Aplicacion.TestControladorUniversidad;
 import Test.Aplicacion.TestControladoraInscripciones;
+import Test.Aplicacion.TestCoordinadorAcademico;
 
 
 public class main {
@@ -21,6 +22,8 @@ public class main {
         TestControladoraInscripciones.testValidarDiaInscripcion();
 
         TestControladorUniversidad.testFromCarreraGetFacultad();
+
+        TestCoordinadorAcademico.testAsignarCatedras();
 
         TestControladorInformes.exportarInformeCursada();
 

@@ -26,7 +26,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCarrera("Facultad de Ciencias Sociales", "Sociología", 300);
         Uni.crearMateria("Sociología", "Introducción a la Sociología", 64, 101);
         Uni.crearCatedra(101, 201, 101, 50, "mañana", 800, 1000, "lunes");
-        Uni.crearCatedra(101, 202, 102, 50, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(101, 202, 102, 50, "tarde", 1400, 1600, "miercoles");
 
         Uni.crearMateria("Sociología", "Métodos de Investigación", 64, 102);
         Uni.crearCatedra(102, 203, 103, 30, "mañana", 900, 1100, "martes");
@@ -38,7 +38,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCarrera("Facultad de Ciencias Sociales", "Psicología", 320);
         Uni.crearMateria("Psicología", "Psicología General", 64, 104);
         Uni.crearCatedra(104, 205, 105, 60, "mañana", 800, 1000, "lunes");
-        Uni.crearCatedra(104, 206, 106, 60, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(104, 206, 106, 60, "tarde", 1400, 1600, "miercoles");
 
         Uni.crearMateria("Psicología", "Psicología del Desarrollo", 64, 105);
         Uni.crearCatedra(105, 207, 107, 40, "mañana", 900, 1100, "martes");
@@ -49,7 +49,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCatedra(106, 208, 108, 50, "mañana", 800, 1000, "viernes");
 
         Uni.crearMateria("Antropología", "Arqueología", 64, 107);
-        Uni.crearCatedra(107, 209, 109, 30, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(107, 209, 109, 30, "tarde", 1400, 1600, "miercoles");
 
         // Crear Facultad de Ciencias Naturales
         Uni.crearFacultad("Facultad de Ciencias Naturales", new Fecha(22, 3, 2025));
@@ -58,7 +58,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCarrera("Facultad de Ciencias Naturales", "Biología", 340);
         Uni.crearMateria("Biología", "Biología General", 64, 108);
         Uni.crearCatedra(108, 210, 110, 50, "mañana", 800, 1000, "lunes");
-        Uni.crearCatedra(108, 211, 111, 50, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(108, 211, 111, 50, "tarde", 1400, 1600, "miercoles");
 
         Uni.crearMateria("Biología", "Genética", 64, 109);
         Uni.crearCatedra(109, 212, 112, 30, "mañana", 900, 1100, "martes");
@@ -81,7 +81,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCatedra(113, 217, 117, 50, "mañana", 800, 1000, "viernes");
 
         Uni.crearMateria("Química", "Química Orgánica", 64, 114);
-        Uni.crearCatedra(114, 218, 118, 30, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(114, 218, 118, 30, "tarde", 1400, 1600, "miercoles");
 
         // Crear Facultad de Ciencias Humanas
         Uni.crearFacultad("Facultad de Ciencias Humanas", new Fecha(23, 3, 2025));
@@ -90,7 +90,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCarrera("Facultad de Ciencias Humanas", "Historia", 330);
         Uni.crearMateria("Historia", "Historia Antigua", 64, 115);
         Uni.crearCatedra(115, 219, 119, 50, "mañana", 800, 1000, "lunes");
-        Uni.crearCatedra(115, 220, 120, 50, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(115, 220, 120, 50, "tarde", 1400, 1600, "miercoles");
 
         Uni.crearMateria("Historia", "Historia Medieval", 64, 116);
         Uni.crearCatedra(116, 221, 121, 30, "mañana", 900, 1100, "martes");
@@ -102,7 +102,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCarrera("Facultad de Ciencias Humanas", "Filosofía", 320);
         Uni.crearMateria("Filosofía", "Filosofía Antigua", 64, 118);
         Uni.crearCatedra(118, 223, 123, 60, "mañana", 800, 1000, "lunes");
-        Uni.crearCatedra(118, 224, 124, 60, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(118, 224, 124, 60, "tarde", 1400, 1600, "miercoles");
 
         Uni.crearMateria("Filosofía", "Filosofía Moderna", 64, 119);
         Uni.crearCatedra(119, 225, 125, 40, "mañana", 900, 1100, "martes");
@@ -113,7 +113,7 @@ public class CargadorDatosPrueba implements Persistencia {
         Uni.crearCatedra(120, 226, 126, 50, "mañana", 800, 1000, "viernes");
 
         Uni.crearMateria("Letras", "Literatura Contemporánea", 64, 121);
-        Uni.crearCatedra(121, 227, 127, 30, "tarde", 1400, 1600, "miércoles");
+        Uni.crearCatedra(121, 227, 127, 30, "tarde", 1400, 1600, "miercoles");
     }
 
     private static void cargarUsuarios() {
@@ -139,7 +139,7 @@ public class CargadorDatosPrueba implements Persistencia {
         users.cargarEstudiante("Pablo Vargas", 1150457, 47203565, "Letras");
         users.cargarEstudiante("Gabriela Guzman", 1150458, 47203566, "Sociología");
 
-        // Crear 10 docentes
+
         users.cargarDocente("Manuel Silva", 845339, 31457998);
         users.cargarDocente("Rosa Morales", 845340, 31457999);
         users.cargarDocente("Diego Fernandez", 845341, 31458000);
@@ -150,6 +150,73 @@ public class CargadorDatosPrueba implements Persistencia {
         users.cargarDocente("Marta Ruiz", 845346, 31458005);
         users.cargarDocente("Luis Diaz", 845347, 31458006);
         users.cargarDocente("Patricia Herrera", 845348, 31458007);
+        users.cargarDocente("Carlos Gutierrez", 845349, 31458008);
+        users.cargarDocente("Sofia Garcia", 845350, 31458009);
+        users.cargarDocente("Miguel Angel", 845351, 31458010);
+        users.cargarDocente("Ana Martinez", 845352, 31458011);
+        users.cargarDocente("Roberto Lopez", 845353, 31458012);
+        users.cargarDocente("Laura Gonzalez", 845354, 31458013);
+        users.cargarDocente("Francisco Perez", 845355, 31458014);
+        users.cargarDocente("Valeria Sanchez", 845356, 31458015);
+        users.cargarDocente("Hector Rivas", 845357, 31458016);
+        users.cargarDocente("Beatriz Flores", 845358, 31458017);
+
+        boolean[][] matriz1 = {
+                {true, false, true},
+                {false, true, false},
+                {true, true, false},
+                {true, false, true},
+                {true, false, false}
+        };
+        boolean[][] matriz2 = {
+                {false, true, false},
+                {true, false, true},
+                {false, true, true},
+                {true, false, false},
+                {false, false, true}
+        };
+        boolean[][] matriz3 = {
+                {true, true, true},
+                {true, false, false},
+                {true, false, true},
+                {false, true, false},
+                {true, false, false}
+        };
+        boolean[][] matriz4 = {
+                {false, true, false},
+                {true, true, true},
+                {false, true, false},
+                {true, false, true},
+                {false, true, true}
+        };
+        boolean[][] matriz5 = {
+                {true, false, true},
+                {false, true, true},
+                {true, true, false},
+                {false, false, true},
+                {true, true, true}
+        };
+
+        users.getDocente(845339).setPreferencia(matriz1.clone());
+        users.getDocente(845340).setPreferencia(matriz2.clone());
+        users.getDocente(845341).setPreferencia(matriz3.clone());
+        users.getDocente(845342).setPreferencia(matriz4.clone());
+        users.getDocente(845343).setPreferencia(matriz5.clone());
+        users.getDocente(845344).setPreferencia(matriz1.clone());
+        users.getDocente(845345).setPreferencia(matriz2.clone());
+        users.getDocente(845346).setPreferencia(matriz3.clone());
+        users.getDocente(845347).setPreferencia(matriz4.clone());
+        users.getDocente(845348).setPreferencia(matriz5.clone());
+        users.getDocente(845349).setPreferencia(matriz1.clone());
+        users.getDocente(845350).setPreferencia(matriz2.clone());
+        users.getDocente(845351).setPreferencia(matriz3.clone());
+        users.getDocente(845352).setPreferencia(matriz4.clone());
+        users.getDocente(845353).setPreferencia(matriz5.clone());
+        users.getDocente(845354).setPreferencia(matriz1.clone());
+        users.getDocente(845355).setPreferencia(matriz2.clone());
+        users.getDocente(845356).setPreferencia(matriz3.clone());
+        users.getDocente(845357).setPreferencia(matriz4.clone());
+        users.getDocente(845358).setPreferencia(matriz5.clone());
 
     }
 

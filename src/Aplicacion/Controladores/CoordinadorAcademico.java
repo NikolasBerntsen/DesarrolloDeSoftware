@@ -15,10 +15,11 @@ public class CoordinadorAcademico {
                 if (
                         users.validarDisponibilidadDocente(docente.getLegajo(),dia,turno)
                                 &&
-                        catedra.hayDocente()
+                        !catedra.hayDocente()
                 ){
                     catedra.agregarDocente(docente);
                     docente.agregarCatedra(catedra);
+                    break;
                 }
             }
         }
