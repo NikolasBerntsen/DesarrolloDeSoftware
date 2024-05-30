@@ -50,6 +50,16 @@ public class HorarioDocente {
         matriz[xy[0]][xy[1]] = false;
     }
 
+    public void mezclarMatrices(boolean[][] matras){
+        for(int i=0;i<5;i++){
+            for (int j = 0; j < 3; j++) {
+                if (!matriz[i][j] && matras[i][j]){
+                    matriz[i][j] = true;
+                }
+            }
+        }
+    }
+
     public void setMatriz(boolean[][] matriz) {
         this.matriz = matriz;
     }
