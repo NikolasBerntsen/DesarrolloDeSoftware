@@ -224,4 +224,17 @@ public class ControladorUniversidad {
         facultades.clear();
     }
 
+    public List<Catedra> getAllCatedras() {
+        List<Catedra> catedras = new ArrayList<Catedra>();
+        for (Facultad facultad : facultades){
+            for (Carrera carrera : facultad.getCarreras()){
+                for (Materia materia : carrera.getMaterias()){
+                    for (Catedra catedra : materia.getCatedras()){
+                        catedras.add(catedra);
+                    }
+                }
+            }
+        }
+        return catedras;
+    }
 }

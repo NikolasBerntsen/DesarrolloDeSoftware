@@ -6,6 +6,7 @@ import Dominio.Universidad.Materia;
 import Dominio.Usuarios.Docente;
 import Dominio.Usuarios.Estudiante;
 import Dominio.Usuarios.Usuario;
+import Dominio.utils.Turno;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,5 +82,15 @@ public class ControladorUsuarios {
             }
         }
         return null;
+    }
+
+    public List<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public boolean validarDisponibilidadDocente(int legajo, Turno turno){
+        Docente docente = getDocente(legajo);
+        // return docente.estaDisponible(Turno); validar disponibilidad para dicho turno
+        return true;
     }
 }

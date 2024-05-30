@@ -24,10 +24,15 @@ public class FachadaInscripcion {
 
         Materia materia = catedra.getMateria();
 
-        Inscripciones.validarDiaInscripcion(estudiante.getCarrera());
-        Inscripciones.validarCargaHoraria(legajo, idCatedra);
-        Inscripciones.validarCorrelativas(legajo, materia.getCodigoID());
-        Inscripciones.inscribirseEnCatedra(legajo, idCatedra);
-        Inscripciones.pagar(500);
+        if (
+            Inscripciones.validarDiaInscripcion(estudiante.getCarrera())
+                &&
+            Inscripciones.validarCargaHoraria(legajo, idCatedra)
+                &&
+            Inscripciones.validarCorrelativas(legajo, materia.getCodigoID())
+        ){
+            Inscripciones.inscribirseEnCatedra(legajo, idCatedra);
+            Inscripciones.pagar(500);
+        }
     }
 }

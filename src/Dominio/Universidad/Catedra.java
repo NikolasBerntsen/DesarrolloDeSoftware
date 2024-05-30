@@ -110,4 +110,8 @@ public class Catedra {
     public int getId() {
         return id;
     }
+
+    public Turno getTurno() {
+        return turno;
+    }
 }
