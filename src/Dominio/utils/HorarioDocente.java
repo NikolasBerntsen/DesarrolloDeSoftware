@@ -59,4 +59,8 @@ public class HorarioDocente {
             }
         }
     }
+
+    public void setMatriz(boolean[][] matriz) {
+        this.matriz = matriz;
+    }
 }

@@ -2,6 +2,7 @@ package Aplicacion.Fachadas;
 
 import Aplicacion.Controladores.*;
 import Aplicacion.Fachadas.*;
+import Aplicacion.Interfaz.Exportar;
 import Aplicacion.Interfaz.Persistencia;
 import Dominio.Usuarios.*;
 import Dominio.Universidad.*;
@@ -71,7 +72,11 @@ public class FachadaSistema {
                         cargaHoraria
                 );
     }
-    static public void actualizarMateria() {}//////////////////////////////////////
+    static public void actualizarMateria(int idMateria, String nombreNuevo, int cargaHoraria) {
+        Materia materia = ControladorUniversidad.getInstancia().buscarMateria(idMateria);
+        materia.setNombre(nombreNuevo);
+        materia.setCargaHoraria(cargaHoraria);
+    }
     static public void eliminarMateria(String nombreCarrera, int idMateria) {
         ControladorUniversidad.getInstancia().borrarMateria(nombreCarrera, idMateria);
     }
@@ -89,7 +94,12 @@ public class FachadaSistema {
                         cargaHorariaMaxima
                 );
     }
-    static public void actualizarCarrera() {}//////////////////////////////////////
+    static public void actualizarCarrera(String nombreViejo, String nombreNuevo, int cargaHoraria) {
+        ControladorUniversidad Uni = ControladorUniversidad.getInstancia();
+        Carrera carrera = Uni.buscarCarrera(nombreViejo);
+        carrera.setNombre(nombreNuevo);
+        carrera.setCargaHorariaMaxima(cargaHoraria);
+    }
     static public void eliminarCarrera(String nombreCarrera) {
         ControladorUniversidad.getInstancia().borrarCarrera(nombreCarrera);
     }
@@ -102,7 +112,10 @@ public class FachadaSistema {
         ControladorUniversidad.getInstancia()
                 .crearFacultad(nombre,diaLimiteDeInscripcion);
     }
-    static public void actualizarFacultad() {}//////////////////////////////////////
+    static public void actualizarFacultad(String nombreActual, String nombreNuevo, Fecha diaLimite) {
+        ControladorUniversidad.getInstancia().buscarFaculta(nombreActual).setNombre(nombreNuevo);
+        ControladorUniversidad.getInstancia().buscarFaculta(nombreActual).setDiaLimiteInscripcion(diaLimite);
+    }
     static public void eliminarFacultad(String nombreFacultad) {
         ControladorUniversidad.getInstancia().borrarFacultad(nombreFacultad);
     }
@@ -113,18 +126,22 @@ public class FachadaSistema {
     }
     static public void registrarInscripcionEstudiante(int legajo, int idCatedra)  {
         FachadaInscripcion.InscribirseCatedra(legajo, idCatedra);
-    }// Primitivos
+    }
 
     // Gestión de docentes
-    static public void registrarDisponibilidadDocente() {}//////////////////////////////////////
-    static public void actualizarDisponibilidadDocente() {}//////////////////////////////////////
-    static public void generarInformeHorariosAulasAsignadas() {} //////////////////////////////////////
+    static public void setPreferenciaDocente(int legajo,boolean[][] matrizHorario) {
+        ControladorUsuarios.getInstancia().getDocente(legajo).setPreferencia(matrizHorario);
+    }
+
     static public void asignarCatedrasDocentes() {
         CoordinadorAcademico.asignarCatedras();
     }
 
+    static public void exportarInformeDocente(int legajo, Exportar tipoDocumento){
+        ControladorInformes.getInstancia().setDocumento(tipoDocumento);
+        ControladorUsuarios.getInstancia().getDocente(legajo).crearInforme();
+    }
 
-    // Integración con otros sistemas
     static public int cargaHorariaDocente(int legajo) {
         return ControladorUsuarios.getInstancia().getDocente(legajo).getCargaHoraria();
     }

@@ -63,4 +63,7 @@ public class Docente extends Usuario {
         return disponibilidad.getdisponibilidad(dia, turno);
     }
 
+    public void setPreferencia(boolean[][] matrizHorario) {
+        preferencia.setMatriz(matrizHorario);
+    }
 }
