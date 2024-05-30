@@ -1,5 +1,6 @@
-package Test;
+package Infraestructura.Persistencia;
 
+import Aplicacion.Interfaz.Persistencia;
 import Dominio.Universidad.Carrera;
 import Dominio.Universidad.Catedra;
 import Dominio.Universidad.Facultad;
@@ -11,12 +12,7 @@ import Aplicacion.Controladores.ControladorUniversidad;
 
 import java.util.List;
 
-public class CargadorDatosPrueba {
-
-    public static void cargarDatos() {
-        cargarUniversidad();
-        cargarUsuarios();
-    }
+public class CargadorDatosPrueba implements Persistencia {
 
     private static void cargarUniversidad() {
 
@@ -93,4 +89,9 @@ public class CargadorDatosPrueba {
         */
     }
 
+    @Override
+    public void descargarDatos() {
+        cargarUniversidad();
+        cargarUsuarios();
+    }
 }

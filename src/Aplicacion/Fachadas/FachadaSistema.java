@@ -2,6 +2,7 @@ package Aplicacion.Fachadas;
 
 import Aplicacion.Controladores.*;
 import Aplicacion.Fachadas.*;
+import Aplicacion.Interfaz.Persistencia;
 import Dominio.Usuarios.*;
 import Dominio.Universidad.*;
 import Dominio.utils.Fecha;
@@ -10,8 +11,8 @@ import java.util.List;
 
 public class FachadaSistema {
 
-    static public void sincronizarDatos() {
-        // AUTOCARGAR DATOS
+    static public void sincronizarDatos(Persistencia BaseDatos) {
+        BaseDatos.descargarDatos();
     }
 
     // Gestión de catedra
@@ -70,7 +71,7 @@ public class FachadaSistema {
                         cargaHoraria
                 );
     }
-    static public void actualizarMateria() {}
+    static public void actualizarMateria() {}//////////////////////////////////////
     static public void eliminarMateria(String nombreCarrera, int idMateria) {
         ControladorUniversidad.getInstancia().borrarMateria(nombreCarrera, idMateria);
     }
@@ -88,7 +89,7 @@ public class FachadaSistema {
                         cargaHorariaMaxima
                 );
     }
-    static public void actualizarCarrera() {}
+    static public void actualizarCarrera() {}//////////////////////////////////////
     static public void eliminarCarrera(String nombreCarrera) {
         ControladorUniversidad.getInstancia().borrarCarrera(nombreCarrera);
     }
@@ -101,7 +102,7 @@ public class FachadaSistema {
         ControladorUniversidad.getInstancia()
                 .crearFacultad(nombre,diaLimiteDeInscripcion);
     }
-    static public void actualizarFacultad() {}
+    static public void actualizarFacultad() {}//////////////////////////////////////
     static public void eliminarFacultad(String nombreFacultad) {
         ControladorUniversidad.getInstancia().borrarFacultad(nombreFacultad);
     }
@@ -115,14 +116,18 @@ public class FachadaSistema {
     }// Primitivos
 
     // Gestión de docentes
-    static public void registrarDisponibilidadDocente() {}
-    static public void actualizarDisponibilidadDocente() {}
-    static public void generarInformeHorariosAulasAsignadas() {}
-    static public void asignarCatedrasDocentes(int idcatedra, String legajo) {}
+    static public void registrarDisponibilidadDocente() {}//////////////////////////////////////
+    static public void actualizarDisponibilidadDocente() {}//////////////////////////////////////
+    static public void generarInformeHorariosAulasAsignadas() {} //////////////////////////////////////
+    static public void asignarCatedrasDocentes() {
+        CoordinadorAcademico.asignarCatedras();
+    }
 
 
     // Integración con otros sistemas
-    static public void cargaHorariaDocente(String legajo) {}
+    static public int cargaHorariaDocente(int legajo) {
+        return ControladorUsuarios.getInstancia().getDocente(legajo).getCargaHoraria();
+    }
     static public int cantidadInscriptosPorCatedra(int idCatedra) {
         return ControladorUniversidad.getInstancia().buscarCatedra(idCatedra).getCantidadInscriptos();
     }
