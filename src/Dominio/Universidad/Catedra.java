@@ -16,7 +16,6 @@ public class Catedra {
     private String dia;
     private List<Docente> docentes;
     private List<Estudiante> alumnosInscriptos;
-
     private Materia materia;
 
     public Catedra() {

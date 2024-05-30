@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorUsuarios {
-    List<Estudiante> estudiates = new ArrayList<Estudiante>();
-    List<Docente> docentes = new ArrayList<Docente>();
+    private List<Estudiante> estudiates = new ArrayList<Estudiante>();
+    private List<Docente> docentes = new ArrayList<Docente>();
     private static ControladorUsuarios instancia = null;
 
     private ControladorUsuarios() {}
