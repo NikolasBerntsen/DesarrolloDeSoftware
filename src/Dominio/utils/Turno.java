@@ -16,4 +16,16 @@ public class Turno {
     public void mostrarTurno(){
         System.out.println("Turno: " +this.turno+ ", Hora inicio: "+this.horaInicio+", Hora fin: "+ this.horaFin);
     }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public int getHoraInicio() {
+        return horaInicio;
+    }
+
+    public int getHoraFin() {
+        return horaFin;
+    }
 }

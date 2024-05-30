@@ -1,12 +1,18 @@
 package Dominio.Usuarios;
 import Aplicacion.Controladores.ControladorInformes;
 import Dominio.Universidad.Catedra;
+import Dominio.utils.HorarioDocente;
+import Dominio.utils.Turno;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Docente extends Usuario {
     private List<Catedra> horarioSemanal; // catedras donde esta anotado
+
+    private HorarioDocente disponibilidad = new HorarioDocente();
+
+    private HorarioDocente preferencia = new HorarioDocente();
 
     public Docente(){
         this.horarioSemanal = new ArrayList<>();
@@ -33,12 +39,28 @@ public class Docente extends Usuario {
 
     public void agregarCatedra(Catedra catedra) {
         horarioSemanal.add(catedra);
+        Turno turno = catedra.getTurno();
+        disponibilidad.deshabilitarHorario(catedra.getDia(), turno.getTurno());
     }
     public void quitarCatedra(Catedra catedra) {
         horarioSemanal.remove(catedra);
+        Turno turno = catedra.getTurno();
+        disponibilidad.habilitarHorario(catedra.getDia(), turno.getTurno());
     }
 
     public List<Catedra> getHorarioSemanal() {
         return horarioSemanal;
     }
+
+    public void addPreferencia(String dia,String turno){
+        preferencia.habilitarHorario(dia,turno);
+    }
+    public void removePreferencia(String dia,String turno){
+        preferencia.deshabilitarHorario(dia,turno);
+    }
+
+    public boolean estaDisponible(String dia,String turno){
+        return disponibilidad.getdisponibilidad(dia, turno);
+    }
+
 }

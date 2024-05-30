@@ -10,10 +10,15 @@ public class CoordinadorAcademico {
 
         for (Catedra catedra : Uni.getAllCatedras()){
             for (Docente docente : users.getDocentes()){
-                if (users.validarDisponibilidadDocente(docente.getLegajo(),catedra.getTurno())){
-                    // Inscribir Docente:
-                    // cambiar la disponibilidad del docente, en el horario del turno estara indisponible
-                    // asignar docente a la catedra
+                String turno = catedra.getTurno().getTurno();
+                String dia = catedra.getDia();
+                if (
+                        users.validarDisponibilidadDocente(docente.getLegajo(),dia,turno)
+                                &&
+                        catedra.hayDocente()
+                ){
+                    catedra.agregarDocente(docente);
+                    docente.agregarCatedra(catedra);
                 }
             }
         }

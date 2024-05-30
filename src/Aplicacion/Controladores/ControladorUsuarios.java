@@ -88,9 +88,8 @@ public class ControladorUsuarios {
         return docentes;
     }
 
-    public boolean validarDisponibilidadDocente(int legajo, Turno turno){
+    public boolean validarDisponibilidadDocente(int legajo, String dia,String turno){
         Docente docente = getDocente(legajo);
-        // return docente.estaDisponible(Turno); validar disponibilidad para dicho turno
-        return true;
+        return docente.estaDisponible(dia,turno);
     }
 }

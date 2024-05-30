@@ -14,12 +14,11 @@ public class Catedra {
     private int capacidad;
     private Turno turno;
     private String dia;
-    private List<Docente> docentes;
+    private Docente docente;
     private List<Estudiante> alumnosInscriptos;
     private Materia materia;
 
     public Catedra() {
-        docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
     public Catedra(
@@ -36,7 +35,6 @@ public class Catedra {
         this.capacidad = capacidad;
         setTurno(turno,horaInicio,horaFinal);
         this.dia = dia;
-        docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
@@ -52,12 +50,11 @@ public class Catedra {
         this.aula = aula;
         this.dia = dia;
         setTurno(turno,horaInicio,horaFinal);
-        docentes = new ArrayList<>();
         alumnosInscriptos = new ArrayList<Estudiante>();
     }
 
     public void agregarDocente(Docente docente) {
-        docentes.add(docente);
+        this.docente = docente;
     }
 
     public void agregarAlumno(Estudiante Estudiante) {
@@ -113,5 +110,13 @@ public class Catedra {
 
     public Turno getTurno() {
         return turno;
+    }
+
+    public String getDia() {
+        return dia;
+    }
+
+    public boolean hayDocente() {
+        return docente != null;
     }
 }
